@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import SignupComponent from './CarServiceComponents/SignupComponent.jsx'
+
 import reportWebVitals from './reportWebVitals';
-import './App2.css';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <SignupComponent />
   </React.StrictMode>,
   document.getElementById('root')
 );
