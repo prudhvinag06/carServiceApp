@@ -2,12 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import SignupComponent from './CarServiceComponents/SignupComponent.jsx'
-
+import LoginComponent from './CarServiceComponents/LoginComponent';
 import reportWebVitals from './reportWebVitals';
+import CarServiceComponents from './CarServiceComponents/CarAppComponent.jsx';
+import WelcomeComponent from './CarServiceComponents/WelcomeComponent'
+import CarAppComponent from './CarServiceComponents/CarAppComponent.jsx';
 
 ReactDOM.render(
   <React.StrictMode>
-    <SignupComponent />
+    <CarAppComponent/>
   </React.StrictMode>,
   document.getElementById('root')
 );
