@@ -1,12 +1,13 @@
 import { Component } from 'react';
 import '../navbar.css';
 import { Navigate } from 'react-router-dom'
-import NavBarComponent from './NavBarComponent';
+import NavBarComponent from './NavBarComponent'
+import '../style.css';
 class WelcomeComponent extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div>
        <NavBarComponent></NavBarComponent>
       </div>
     )

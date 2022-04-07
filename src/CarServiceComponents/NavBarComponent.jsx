@@ -1,77 +1,63 @@
-import { Component } from 'react';
-import '../style.css';
-import { Navigate } from 'react-router-dom'
 
-class NavBarComponent extends Component {
-    constructor(props) {
-        super(props);
-        // this.state = {
-        //   email: '',
-        //   password: '',
-        //   hasLoginFailed: false,
-        //   showSuccessMessage: false
-        // }
-        this.MyAccount = this.MyAccount.bind(this);
-        
-      }
-  render() {
-    return (
-      <div className="container">
-    
-        
-        <title>Responsive Sidebar Menu</title>
-        <link rel="stylesheet" href="style.css"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-        
-
-        <input type="checkbox" id="check"/>
-        <label for="check">
-            <i className="fas fa-bars" id="btn"></i>
-            <i className="fas fa-times" id="cancel"></i>
-        </label>
+import React, { Component } from "react"
 
 
-        <div className="sidebar">
-      <header>CarService</header>
-      <a href="#" class="active">
-        <i className="fas fa-qrcode"></i>
-        <span onClick={this.MyAccount}>My Account</span>
-      </a>
-      <a href="#">
-        <i className="fas fa-link"></i>
-        <span>Book a Service</span>
-      </a>
-      <a href="#">
-        <i className="fas fa-stream"></i>
-        <span>My Bookings</span>
-      </a>
-      <a href="#">
-         <i className="fas fa-calendar"></i>
-        <span>Settings</span>
-      </a>
-      {/* <a href="#">
-        <i className="far fa-question-circle"></i>
-        <span>About</span>
-      </a> */}
-      {/* <a href="#">
-        <i className="fas fa-sliders-h"></i>
-        <span>Services</span>
-      </a> */}
-      <a href="#">
-        <i className="far fa-envelope"></i>
-        <span>Contact</span>
-      </a>
-    </div>
+export default class NavBarComponent extends Component{
+   render(){
+      return(
+         <div>
+ 
+  
+      <meta charset="utf-8"/>
+      <title>Animated Sidebar Menu | CodingLab</title>
+      <link rel="stylesheet" href="style.css"/>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+   
+   <body>
+      <div class="wrapper">
+         <input type="checkbox" id="btn" hidden/>
+         <label for="btn" class="menu-btn">
+         <i class="fas fa-bars"></i>
+         <i class="fas fa-times"></i>
+         </label>
+         <nav id="sidebar">
+            <div class="title">
+               Side Menu
+            </div>
+            <ul class="list-items">
+               <li><a href="#"><i class="fas fa-home"></i>Home</a></li>
+               <li><a href="#"><i class="fas fa-sliders-h"></i>Clients</a></li>
+               <li><a href="#"><i class="fas fa-address-book"></i>Services</a></li>
+               <li><a href="#"><i class="fas fa-cog"></i>Settings</a></li>
+               <li><a href="#"><i class="fas fa-stream"></i>Features</a></li>
+               <li><a href="#"><i class="fas fa-user"></i>About us</a></li>
+               <li><a href="#"><i class="fas fa-globe-asia"></i>Languages</a></li>
+               <li><a href="#"><i class="fas fa-envelope"></i>Contact us</a></li>
+               <div class="icons">
+                  <a href="#"><i class="fab fa-facebook-f"></i></a>
+                  <a href="#"><i class="fab fa-twitter"></i></a>
+                  <a href="#"><i class="fab fa-github"></i></a>
+                  <a href="#"><i class="fab fa-youtube"></i></a>
+               </div>
+            </ul>
+         </nav>
       </div>
-    )
-  }
-  
-  MyAccount(){
-    console.log('My Account Clicked!')
-    //this.props.navigate('/welcomePage')
-  }
-  
+      <div class="content">
+         <div class="header">
+            Animated Side Navigation Menu
+         </div>
+         <p>
+            using only HTML and CSS
+         </p>
+      </div>
+   </body>
+</div>
+         
+
+
+
+      )
+   }
 }
 
-export default NavBarComponent;
+
