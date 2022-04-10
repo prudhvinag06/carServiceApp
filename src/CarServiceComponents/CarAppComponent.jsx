@@ -4,12 +4,14 @@ import withNavigation from "../utils/WithNavigation";
 import WelcomeComponent from "./WelcomeComponent";
 import LoginComponent from "./LoginComponent";
 import SignupComponent from "./SignupComponent";
+import CarServicesComponent from "./CarServicesComponent";
 
 class CarAppComponent extends Component{
     render(){
         const LoginComponentWithNavigation = withNavigation(LoginComponent);
         const SignupComponentWithNavigation = withNavigation(SignupComponent);
         const WelcomeComponentWithNavigation = withNavigation(WelcomeComponent);
+        const CarServicesComponentWithNavigation = withNavigation(CarServicesComponent);
 
         return(
             <div className="CarApp">
@@ -19,7 +21,7 @@ class CarAppComponent extends Component{
                         <Route path="/login" element={<LoginComponentWithNavigation />} />
                         <Route path="/signup" element={<SignupComponentWithNavigation />} />
                         <Route path="/welcomePage" element={<WelcomeComponentWithNavigation />} />
-                        
+                        <Route path="/carServices" element={<CarServicesComponentWithNavigation />} />
                     </Routes>
                 </Router>
             </div>

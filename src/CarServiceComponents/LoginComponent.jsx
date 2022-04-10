@@ -40,6 +40,7 @@ class LoginComponent extends Component {
       </div>
     )
   }
+  
   LoginClicked(){
     console.log('Login Button Clicked!')
     this.props.navigate('/welcomePage')
