@@ -10,7 +10,7 @@ class WelcomeComponent extends Component {
 
     }
     this.carServicesComp = this.carServicesComp.bind(this);
-    // this.carBookingsComp = this.carBookingsComp.bind(this);
+    this.carBookingsComp = this.carBookingsComp.bind(this);
   }
   render() {
     return (
@@ -75,17 +75,18 @@ class WelcomeComponent extends Component {
   }
 
   carBookingsComp() {
-    console.log("bookings");
+    console.log("bookinsadffsfgs");
+    this.props.navigate('/carBookings')
   }
-  myAccountComp() {
-    console.log("account");
-  }
-  settingsComp() {
-    console.log("settings")
-  }
-  contactComp() {
-    console.log("contact")
-  }
+  // myAccountComp() {
+  //   console.log("account");
+  // }
+  // settingsComp() {
+  //   console.log("settings")
+  // }
+  // contactComp() {
+  //   console.log("contact")
+  // }
 
 }
 

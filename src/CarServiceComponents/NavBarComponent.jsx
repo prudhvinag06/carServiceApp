@@ -11,11 +11,6 @@ export default class NavBarComponent extends Component{
       this.state = {
          
        }
-   //   this.carServicesComp = this.carServicesComp.bind(this);
-      this.carBookingsComp = this.carBookingsComp.bind(this);
-      this.contactComp = this.contactComp.bind(this);
-      this.myAccountComp = this.myAccountComp.bind(this);
-      this.settingsComp = this.settingsComp.bind(this);
     }
 
    render(){
@@ -56,7 +51,7 @@ export default class NavBarComponent extends Component{
       </div>
       <div className="content">
          <div className="header">
-            Car Services
+            {this.props.val}
          </div>
          {/* <p>
             using only HTML and CSS

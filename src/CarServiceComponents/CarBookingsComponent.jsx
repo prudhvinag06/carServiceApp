@@ -4,12 +4,13 @@ import { Navigate } from 'react-router-dom'
 import NavBarComponent from './NavBarComponent'
 import '../style.css';
 import LoginComponent from './LoginComponent';
-class CarServicesComponent extends Component {
+class CarBookingsComponent extends Component {
 
   render() {
     return (
       <div>
-          <NavBarComponent val = "Car Services Component"></NavBarComponent>
+          {/* <NavBarComponent val = "Car Bookings Component"></NavBarComponent> */}
+          <h1>Car Bookings Component</h1>
       </div>
     )
   }
@@ -18,4 +19,4 @@ class CarServicesComponent extends Component {
   
 }
 
-export default CarServicesComponent;
+export default CarBookingsComponent;
