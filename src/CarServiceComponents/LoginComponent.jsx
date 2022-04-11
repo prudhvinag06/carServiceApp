@@ -8,9 +8,7 @@ class LoginComponent extends Component {
     super(props);
     this.state = {
       email: '',
-      password: '',
-      hasLoginFailed: false,
-      showSuccessMessage: false
+      password: ''
     }
     this.handleChange = this.handleChange.bind(this);
     this.Signup = this.Signup.bind(this);
@@ -43,6 +41,7 @@ class LoginComponent extends Component {
   
   LoginClicked(){
     console.log('Login Button Clicked!')
+    console.log(this.state.email);
     this.props.navigate('/welcomePage')
   }
 

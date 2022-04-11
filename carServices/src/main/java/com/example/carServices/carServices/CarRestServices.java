@@ -1,15 +1,14 @@
 package com.example.carServices.carServices;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
+import java.net.URI;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000/")
+@CrossOrigin(origins = "http://localhost:3001/")
 
 public class CarRestServices {
     @Autowired
@@ -18,5 +17,11 @@ public class CarRestServices {
     @GetMapping("/users/city/services/getAllServices")
     public List<Services> getAllServices(){
         return servicesHardCoded.getServices();
+    }
+
+    @PostMapping("/users/register/")
+    public String addUser(@RequestBody Details details){
+        System.out.println("reached here !!" + details.getEmail());
+        return "Hello Reached here!";
     }
 }

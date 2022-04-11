@@ -2,6 +2,7 @@ import { Component } from 'react';
 import '../App.css';
 import '../App2.css';
 import { Navigate } from 'react-router-dom'
+import CarServicesApi from '../ApiServices/CarServicesApi';
 
 class SignupComponent extends Component {
   constructor(props) {
@@ -9,19 +10,18 @@ class SignupComponent extends Component {
     this.state = {
       username: '',
       email: '',
-      password: '',
-      hasLoginFailed: false,
-      showSuccessMessage: false
+      password: ''
     }
     this.handleChange = this.handleChange.bind(this);
     this.LoginPage = this.LoginPage.bind(this);
+    this.register = this.register.bind(this);
   }
   render() {
     return (
       <div className="container">
         <h1>Car Service Registration</h1>
         <p>Please fill in this form to create an account.</p>
-        <form action="action_page.php">
+        <form>
           <div className="container signin">
             <p>Already have an account? <a href="#" onClick={this.LoginPage}>Log in</a>.</p>
           </div>
@@ -37,7 +37,7 @@ class SignupComponent extends Component {
           <input type = "password" placeholder="Enter Password" name = "password" value = {this.state.password} onChange = {this.handleChange}/>
 
           <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
-          <button type="submit" className="registerbtn" onClick={this.on}>Register</button>
+          <button type="submit" className="registerbtn" onClick={this.register}>Register</button>
 
         </form>
       </div>
@@ -49,7 +49,18 @@ class SignupComponent extends Component {
       { [event.target.name]: event.target.value }
     )
   }
-
+  register(){
+    console.log('register button clicked');
+    CarServicesApi.createUser(this.state.username, {
+      username : this.state.username,
+      email : this.state.email,
+      password : this.state.password
+    }).then(
+      () => {
+        this.props.navigate('/login');
+      }
+    )
+  }
   LoginPage() {
     console.log('Login Clicked!');
     this.props.navigate(`/login`)

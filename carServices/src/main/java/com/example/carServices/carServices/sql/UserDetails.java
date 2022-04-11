@@ -11,22 +11,18 @@ public class UserDetails {
     @Id
     @GeneratedValue
     private long user_id;
+    private String username;
+    private String email;
+    private String password;
 
-    public UserDetails(long user_id, String username, String email, String password, long booking_id) {
+    public UserDetails(long user_id, String username, String email, String password) {
         this.user_id = user_id;
         this.username = username;
         this.email = email;
         this.password = password;
-        this.booking_id = booking_id;
     }
 
     protected UserDetails(){}
-
-    private String username;
-    private String email;
-    private String password;
-    private long booking_id;
-
 
     public long getUser_id() {
         return user_id;
@@ -59,18 +55,4 @@ public class UserDetails {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    public long getBooking_id() {
-        return booking_id;
-    }
-
-    public void setBooking_id(long booking_id) {
-        this.booking_id = booking_id;
-    }
-
-
-
-
-
-
 }

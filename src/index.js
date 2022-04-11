@@ -10,11 +10,14 @@ import CarAppComponent from './CarServiceComponents/CarAppComponent.jsx';
 import CarApiServices from './ApiServices/CarApiServices.jsx';
 
 ReactDOM.render(
+  
   <React.StrictMode>
+    
     <CarAppComponent/>
     {/* <CarApiServices/> */}
   </React.StrictMode>,
   document.getElementById('root')
+  
 );
 
 // If you want to start measuring performance in your app, pass a function
