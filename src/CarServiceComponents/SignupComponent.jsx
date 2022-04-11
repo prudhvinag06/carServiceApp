@@ -61,10 +61,10 @@ class SignupComponent extends Component {
       }
     )
   }
+
   LoginPage() {
     console.log('Login Clicked!');
     this.props.navigate(`/login`)
-   
   }
 
 

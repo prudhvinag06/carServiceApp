@@ -1,6 +1,10 @@
 package com.example.carServices.carServices;
 
+import javax.persistence.Entity;
+
+
 public class Details {
+
     private String username;
 
     public Details(String username, String email, String password) {

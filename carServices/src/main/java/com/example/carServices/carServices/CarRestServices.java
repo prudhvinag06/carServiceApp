@@ -1,7 +1,8 @@
 package com.example.carServices.carServices;
 
+import com.example.carServices.carServices.sql.DetailsJpaRepository;
+import com.example.carServices.carServices.sql.UserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -14,14 +15,18 @@ public class CarRestServices {
     @Autowired
     private ServicesHardCoded servicesHardCoded;
 
+    @Autowired
+    private DetailsJpaRepository detailsJpaRepository;
+
     @GetMapping("/users/city/services/getAllServices")
     public List<Services> getAllServices(){
         return servicesHardCoded.getServices();
     }
 
     @PostMapping("/users/register/")
-    public String addUser(@RequestBody Details details){
+    public String addUser(@RequestBody UserDetails details){
         System.out.println("reached here !!" + details.getEmail());
+        UserDetails details1 = detailsJpaRepository.save(details);
         return "Hello Reached here!";
     }
 }
