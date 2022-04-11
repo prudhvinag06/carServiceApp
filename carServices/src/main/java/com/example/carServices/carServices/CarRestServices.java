@@ -25,7 +25,6 @@ public class CarRestServices {
 
     @PostMapping("/users/register/")
     public String addUser(@RequestBody UserDetails details){
-        System.out.println("reached here !!" + details.getEmail());
         UserDetails details1 = detailsJpaRepository.save(details);
         return "Hello Reached here!";
     }

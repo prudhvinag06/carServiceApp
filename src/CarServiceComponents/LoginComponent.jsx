@@ -40,9 +40,15 @@ class LoginComponent extends Component {
   }
   
   LoginClicked(){
+    if(this.state.email == "admin@gmail.com"){
+      this.props.navigate('/adminPage')
+    }
+    else{
+      this.props.navigate('/welcomePage')
+    }
     console.log('Login Button Clicked!')
     console.log(this.state.email);
-    this.props.navigate('/welcomePage')
+    
   }
 
   handleChange(event) {
