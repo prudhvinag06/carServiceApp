@@ -9,7 +9,7 @@ import java.util.List;
 @Service
 public class ServicesHardCoded {
     private static List<Services> services = new ArrayList();
-    private static long idCounter = 0;
+    private static long idCounter = 100000;
     static {
         services.add(new Services(++idCounter, "Service 1", "Bangalore", true));
         services.add(new Services(++idCounter, "Service 2", "Hyderabad", true));
