@@ -5,7 +5,6 @@ import com.example.carServices.carServices.sql.UserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -19,7 +18,7 @@ public class CarRestServices {
     private DetailsJpaRepository detailsJpaRepository;
 
     @GetMapping("/users/city/services/getAllServices")
-    public List<Services> getAllServices(){
+    public List<UserDetails.Services> getAllServices(){
         return servicesHardCoded.getServices();
     }
 

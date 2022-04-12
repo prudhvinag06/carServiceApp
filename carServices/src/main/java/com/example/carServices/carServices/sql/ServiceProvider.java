@@ -1,5 +1,11 @@
+
+/*
+Service provider logging in details database
+ */
+
 package com.example.carServices.carServices.sql;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -50,6 +56,7 @@ public class ServiceProvider {
     @Id
     @GeneratedValue
     private long serviceProvider_id;
+    @Column(unique = true)
     private String serviceProvider_name;
     private String email;
     private String password;

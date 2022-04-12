@@ -57,7 +57,12 @@ class SignupComponent extends Component {
       password : this.state.password
     }).then(
       () => {
+        alert('Registered Successfully')
         this.props.navigate('/login');
+      }
+    ).catch(
+      () => {
+        alert('Error Registering. Try using different username or email');
       }
     )
   }
