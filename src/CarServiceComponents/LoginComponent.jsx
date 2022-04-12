@@ -30,7 +30,8 @@ class LoginComponent extends Component {
 
           <label for="psw"><b>Password</b></label>
           <input type = "password" placeholder="Enter Password" name = "password" value = {this.state.password} onChange = {this.handleChange}/>         
-          <button type="submit" className="registerbtn" onClick={this.LoginClicked}>Login</button>
+                   {/* below always use button as type and not submit. This can fuck u for many hours */}
+          <button type="button" className="registerbtn" onClick={this.LoginClicked}>Login</button>
 
         </form>
 
