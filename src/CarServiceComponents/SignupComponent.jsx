@@ -26,14 +26,14 @@ class SignupComponent extends Component {
             <p>Already have an account? <a href="#" onClick={this.LoginPage}>Log in</a>.</p>
           </div>
           
-          <label for="username"><b>Username</b></label>
-          <input type="password" placeholder="Username" name="username" id="username" required value={this.state.username} onChange={this.handleChange}></input>
+          <label><b>Username</b></label>
+          <input type="text" placeholder="Username" name="username" id="username" required value={this.state.username} onChange={this.handleChange}></input>
          
 
-          <label for="email"><b>Email</b></label>
-          <input type="text" placeholder="Enter Email" name="email" id="email" required value={this.state.email} onChange={this.handleChange}></input>
+          {/* <label><b>Email</b></label>
+          <input type="text" placeholder="Enter Email" name="email" id="email" required value={this.state.email} onChange={this.handleChange}></input> */}
 
-          <label for="psw"><b>Password</b></label>
+          <label ><b>Password</b></label>
           <input type = "password" placeholder="Enter Password" name = "password" value = {this.state.password} onChange = {this.handleChange}/>
 
           <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
@@ -50,29 +50,35 @@ class SignupComponent extends Component {
     )
   }
 
-  
-  register(){
-    console.log('register button clicked');
-    CarServicesApi.createUser(this.state.username, {
-      username : this.state.username,
-      email : this.state.email,
-      password : this.state.password
-    }).then(
-      () => {
-        alert('Registered Successfully')
-        this.props.navigate('/login');
-      }
-    ).catch(
-      () => {
-        alert('Error Registering. Try using different username or email');
-      }
-    )
-  }
-
   LoginPage() {
     console.log('Login Clicked!');
     this.props.navigate(`/login`)
   }
+
+  register(){
+    console.log('register button clicked');
+    CarServicesApi.createUser(this.state.username, {
+      username : this.state.username,
+      //email : this.state.email,
+      password : this.state.password
+    }).then(
+      () => {
+        alert('Registered Successfully')
+        this.props.navigate('/servicesDetails')
+        console.log("Reached here")
+      }
+    ).catch(
+      () => {
+        alert('Error Registering. Try using different username or email');
+        this.props.navigate('/adminPage')
+
+      }
+    )
+   // this.props.navigate('/servicesDetails')
+   
+  }
+
+  
 
 
 }

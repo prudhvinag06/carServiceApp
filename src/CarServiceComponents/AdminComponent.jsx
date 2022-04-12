@@ -2,6 +2,8 @@
 import React, { Component } from 'react'
 import '../App.css';
 import '../App2.css';
+import CarServicesApi from '../ApiServices/CarServicesApi';
+
 export default class AdminComponent extends Component {
 
   constructor(props) {
@@ -51,6 +53,8 @@ export default class AdminComponent extends Component {
   RegisterService(){
     console.log(this.state.service_Provider_name);
     console.log(this.state.location);
+    CarServicesApi.RegisterService();
+
     this.props.navigate('/servicesDetails')
   }
 }
