@@ -49,6 +49,8 @@ class SignupComponent extends Component {
       { [event.target.name]: event.target.value }
     )
   }
+
+  
   register(){
     console.log('register button clicked');
     CarServicesApi.createUser(this.state.username, {

@@ -3,30 +3,54 @@ import React, { Component } from 'react'
 import '../App.css';
 import '../App2.css';
 export default class AdminComponent extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      service_Provider_name: '',
+      location: 'Bangalore'
+    }
+    this.handleChange = this.handleChange.bind(this);
+    this.RegisterService = this.RegisterService.bind(this);
+
+  }
+
   render() {
     return (
       <div className="container">
-          <h1>Admin Services Page</h1>
-          <p>Please fill services details</p>
-          <form>
-          {/* <div className="container signin">
-            <p>New user? <a href="#" onClick={this.Signup}>Sign up</a>.</p>
-          </div> */}
+        <h1>Admin Services Page</h1>
+        <p>Please fill services details</p>
+        <form>
+          <label><b>Service Provider Name</b></label>
+          <input type="text" placeholder="Enter Provider Name" name="service_Provider_name" id="email" required value={this.state.service_Provider_name} onChange={this.handleChange}></input>
+
+         
+
+          <select name="location" id="location" required value={this.state.location} onChange={this.handleChange}>
+            <option value="Bangalore">Bangalore</option>
+            <option value="Hyderabad">Hyderabad</option>
+          </select>
+          <div><button type="submit" className="registerbtn" onClick={this.RegisterService}>Register Service</button></div>
           
 
-          {/* <label for="email"><b>Email</b></label>
-          <input type="text" placeholder="Enter Email" name="email" id="email" required value={this.state.email} onChange={this.handleChange}></input>
-
-          <label for="psw"><b>Password</b></label>
-          <input type = "password" placeholder="Enter Password" name = "password" value = {this.state.password} onChange = {this.handleChange}/>         
-          <button type="submit" className="registerbtn" onClick={this.LoginClicked}>Login</button> */}
-      
         </form>
 
 
 
 
-      </div> 
+      </div>
     )
+  }
+
+  handleChange(event) {
+    this.setState(
+      { [event.target.name]: event.target.value }
+    )
+  }
+
+  RegisterService(){
+    console.log(this.state.service_Provider_name);
+    console.log(this.state.location);
+    this.props.navigate('/servicesDetails')
   }
 }

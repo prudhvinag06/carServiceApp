@@ -7,6 +7,7 @@ import SignupComponent from "./SignupComponent";
 import CarServicesComponent from "./CarServicesComponent";
 import CarBookingsComponent from "./CarBookingsComponent";
 import AdminComponent from "./AdminComponent";
+import ServicesDetails from "./ServicesDetails";
 
 class CarAppComponent extends Component{
     render(){
@@ -16,6 +17,7 @@ class CarAppComponent extends Component{
         const CarServicesComponentWithNavigation = withNavigation(CarServicesComponent);
         const CarBookingsComponentwithNavigation = withNavigation(CarBookingsComponent);
         const AdminComponentwithNavigation = withNavigation(AdminComponent);
+        const ServicesDetailswithNavigation = withNavigation(ServicesDetails);
 
         return(
             <div className="CarApp">
@@ -28,6 +30,7 @@ class CarAppComponent extends Component{
                         <Route path="/carServices" element={<CarServicesComponentWithNavigation />} />
                         <Route path="/carBookings" element={<CarBookingsComponentwithNavigation />} />
                         <Route path="/adminPage" element={<AdminComponentwithNavigation />} />
+                        <Route path="/servicesDetails" element={<ServicesDetailswithNavigation />} />
                     </Routes>
                 </Router>
             </div>
