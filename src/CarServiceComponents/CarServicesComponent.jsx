@@ -4,14 +4,27 @@ import { Navigate } from 'react-router-dom'
 import NavBarComponent from './NavBarComponent'
 import '../style.css';
 import LoginComponent from './LoginComponent';
+import CarServicesApi from '../ApiServices/CarServicesApi';
 class CarServicesComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
-    
+          services : []
         }
         this.carServicesComp = this.carServicesComp.bind(this);
         this.carBookingsComp = this.carBookingsComp.bind(this);
+        this.refreshServices = this.refreshServices.bind(this);
+      }
+      componentDidMount(){
+        this.refreshServices();
+      }
+      refreshServices(){
+        const value = []
+        CarServicesApi.getServices().then((response) =>
+          //  console.log(response.data)
+          this.setState({services : response.data})
+        )
+      //  console.log(this.state.services)
       }
   render() {
     return (
@@ -59,6 +72,21 @@ class CarServicesComponent extends Component {
           <div className="content">
             <div className="header">
               Car Services Component
+              <tbody>
+                        {/* important step below (use of map function) */}
+                        {
+                            this.state.services.map (
+                                service =>
+                                <tr>
+                                <td>{service.id}</td>
+                                <td>{service.location}</td>
+                                <td>{service.serviceName}</td>
+                                </tr>
+                            )
+                           
+                        }
+                        
+                    </tbody>
             </div>
             {/* <p>
             using only HTML and CSS

@@ -46,8 +46,8 @@ public class CarRestServices {
         return subServiceDetails1.getId();
     }
 
-//    @GetMapping("/users/services/getAllServices")
-//    public String getAllServices(){
-//       // Service serviceDetails = 
-//    }
+    @GetMapping("/users/services/getAllServices")
+    public List<Service> getAllServices(){
+       return serviceJpaRepository.findAll();
+    }
 }

@@ -14,12 +14,7 @@ class WelcomeComponent extends Component {
   }
   render() {
     return (
-      // <div>
-      //  <NavBarComponent></NavBarComponent>
-      // </div>
       
-      
-
       <div>
         <title>Car Services</title>
         <link rel="stylesheet" href="style.css" />
