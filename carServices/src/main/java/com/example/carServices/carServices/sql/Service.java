@@ -1,17 +1,15 @@
 package com.example.carServices.carServices.sql;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Service {
     public Service(){}
 
+    @TableGenerator(name = "id", initialValue = 10000, allocationSize = 100)
     @Id
-    @GeneratedValue
-    private Long id = Long.valueOf(10000);
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "id")
+    private Long id;
 
     public Long getId() {
         return id;

@@ -1,45 +1,55 @@
 import React, { Component } from 'react'
-import {useParams } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import CarServicesApi from '../ApiServices/CarServicesApi';
+
 
 
 export default class subservicesRegistration extends Component {
-    
+
     constructor(props) {
         super(props);
         this.state = {
-            id_service : this.props.id,
+            id_service: this.props.params.id,
             sub_service_name: '',
             cost: 0
         }
-        // this.handleChange = this.handleChange.bind(this);
-        // this.RegisterService = this.RegisterService.bind(this);
-
+        this.handleChange = this.handleChange.bind(this);
+        this.RegisterSubService = this.RegisterSubService.bind(this);
     }
 
     render() {
-        // const { id } = useParams();
-
-     //   const { id } = useParams();
+       
         console.log(this.props.params.id)
         return (
             <div>
                 <div className="container">
-                    <h1>Admin Services Page</h1>
-                    <p>Please fill services details</p>
-                    
+                    <h1>Admin Sub-Services Registration</h1>
+                    <p>Please fill sub-services details</p>
+
                     <form>
-                        {/* <label><b>Service Provider Name</b></label>
-                        <input type="text" placeholder="Enter Provider Name" name="service_Provider_name" id="email" required value={this.state.service_Provider_name} onChange={this.handleChange}></input>
+                        <div className="container">
+                            
+                            <form>
+                                <label><b>Sub Service Name</b></label>
+                                <input type="text" placeholder="Enter Sub Service Name" name="sub_service_name" id="sub_service_name" required value={this.state.sub_service_name} onChange={this.handleChange}></input>
+                                <label><b>Sub Service Cost</b></label>
+                                <div></div>
+                                <input type="number" placeholder="Enter Cost" name="cost" id="cost" required value={this.state.cost} onChange={this.handleChange}></input>
 
 
 
-                        <select name="location" id="location" required value={this.state.location} onChange={this.handleChange}>
-                            <option value="Bangalore">Bangalore</option>
-                            <option value="Hyderabad">Hyderabad</option>
-                        </select>
-                        <div><button type="button" className="registerbtn" onClick={this.RegisterService}>Register Service</button></div>
- */}
+                                {/* <select name="location" id="location" required value={this.state.location} onChange={this.handleChange}>
+                                    <option value="Bangalore">Bangalore</option>
+                                    <option value="Hyderabad">Hyderabad</option>
+                                </select> */}
+                                <div><button type="button" className="registerbtn" onClick={this.RegisterSubService}>Register SubService</button></div>
+
+
+                            </form>
+
+
+
+
+                        </div>
 
                     </form>
 
@@ -49,5 +59,28 @@ export default class subservicesRegistration extends Component {
                 </div>
             </div>
         )
+    }
+    handleChange(event) {
+        this.setState(
+          { [event.target.name]: event.target.value }
+        )
+    }
+
+    RegisterSubService(){
+        CarServicesApi.RegisterSubService({
+            service_name : this.state.sub_service_name,
+            cost : this.state.cost,
+            serviceProvider_id : this.props.params.id
+        }).then(
+            (response) => {
+              alert('Sub Service Registered Successfully')
+              this.props.navigate(`/subservicesRegistration/${this.props.params.id}`)
+              //console.log("Reached here")
+            }
+          ).catch(
+            () => {
+              alert('Error Registering. Try using different name for service');
+            }
+          )
     }
 }

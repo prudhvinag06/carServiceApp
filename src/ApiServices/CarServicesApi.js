@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-class CarServicesApi{
+class CarServicesApi {
     createUser = async (name, details) => {
         console.log(details);
         const res = await axios.post(`http://localhost:8557/users/register/`, details)
@@ -9,15 +9,23 @@ class CarServicesApi{
         return res;
     }
 
-    createService(){
+    createService() {
         console.log('Reached createService axiom')
     }
 
-    RegisterService = async(service) => {
+    RegisterService = async (service) => {
         console.log('Reached Register Service');
         const res = await axios.post("http://localhost:8557/admin/registerService/", service);
         return res;
     }
+
+    RegisterSubService = async (service) => {
+        console.log('Reached Sub Service Register Service');
+        const res = await axios.post("http://localhost:8557/admin/registerService/registerSubService", service);
+        return res;
+    }
+
+
 }
 
 export default new CarServicesApi();

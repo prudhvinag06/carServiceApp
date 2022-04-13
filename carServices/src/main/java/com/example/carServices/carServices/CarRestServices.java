@@ -1,9 +1,6 @@
 package com.example.carServices.carServices;
 
-import com.example.carServices.carServices.sql.DetailsJpaRepository;
-import com.example.carServices.carServices.sql.Service;
-import com.example.carServices.carServices.sql.ServiceJpaRepository;
-import com.example.carServices.carServices.sql.UserDetails;
+import com.example.carServices.carServices.sql.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,10 +19,13 @@ public class CarRestServices {
     @Autowired
     private ServiceJpaRepository serviceJpaRepository;
 
-    @GetMapping("/users/city/services/getAllServices")
-    public List<UserDetails.Services> getAllServices(){
-        return servicesHardCoded.getServices();
-    }
+    @Autowired
+    private SubServiceJpaRepository subServiceJpaRepository;
+
+//    @GetMapping("/users/city/services/getAllServices")
+//    public List<UserDetails.Services> getAllServices(){
+//        return servicesHardCoded.getServices();
+//    }
 
     @PostMapping("/users/register/")
     public Long addUser(@RequestBody UserDetails details){
@@ -39,4 +39,15 @@ public class CarRestServices {
         Service service1 = serviceJpaRepository.save(service);
         return service1.getId();
     }
+
+    @PostMapping("/admin/registerService/registerSubService")
+    public Long addSubService(@RequestBody SubServiceDetails subServiceDetails){
+        SubServiceDetails subServiceDetails1 = subServiceJpaRepository.save(subServiceDetails);
+        return subServiceDetails1.getId();
+    }
+
+//    @GetMapping("/users/services/getAllServices")
+//    public String getAllServices(){
+//       // Service serviceDetails = 
+//    }
 }

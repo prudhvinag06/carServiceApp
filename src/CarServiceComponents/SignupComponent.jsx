@@ -26,10 +26,10 @@ class SignupComponent extends Component {
       password : this.state.password
     }).then(
       (response) => {
-        alert(response.data);
+       // alert(response.data);
         alert('Registered Successfully')
-        this.props.navigate('/servicesDetails')
-        console.log("Reached here")
+        this.props.navigate('/login')
+       // console.log("Reached here")
       }
     ).catch(
       () => {
