@@ -17,6 +17,7 @@ class SignupComponent extends Component {
     this.register = this.register.bind(this);
   }
 
+  //added register which returns id of user. Use it to get the services and bookings. pass it on to the next component
   register(){
     console.log('register button clicked');
     CarServicesApi.createUser(this.state.username, {
@@ -24,7 +25,8 @@ class SignupComponent extends Component {
       email : this.state.email,
       password : this.state.password
     }).then(
-      () => {
+      (response) => {
+        alert(response.data);
         alert('Registered Successfully')
         this.props.navigate('/servicesDetails')
         console.log("Reached here")
@@ -32,7 +34,7 @@ class SignupComponent extends Component {
     ).catch(
       () => {
         alert('Error Registering. Try using different username or email');
-        this.props.navigate('/adminPage')
+        //this.props.navigate('/adminPage')
 
       }
     )

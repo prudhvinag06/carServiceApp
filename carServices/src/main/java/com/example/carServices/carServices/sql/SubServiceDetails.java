@@ -3,7 +3,7 @@ package com.example.carServices.carServices.sql;
 import javax.persistence.*;
 
 @Entity
-public class ServiceDetails {
+public class SubServiceDetails {
 
     @Id
     @GeneratedValue

@@ -26,14 +26,14 @@ export default class AdminComponent extends Component {
           <label><b>Service Provider Name</b></label>
           <input type="text" placeholder="Enter Provider Name" name="service_Provider_name" id="email" required value={this.state.service_Provider_name} onChange={this.handleChange}></input>
 
-         
+
 
           <select name="location" id="location" required value={this.state.location} onChange={this.handleChange}>
             <option value="Bangalore">Bangalore</option>
             <option value="Hyderabad">Hyderabad</option>
           </select>
-          <div><button type="submit" className="registerbtn" onClick={this.RegisterService}>Register Service</button></div>
-          
+          <div><button type="button" className="registerbtn" onClick={this.RegisterService}>Register Service</button></div>
+
 
         </form>
 
@@ -50,11 +50,26 @@ export default class AdminComponent extends Component {
     )
   }
 
-  RegisterService(){
+  RegisterService() {
     console.log(this.state.service_Provider_name);
     console.log(this.state.location);
-    CarServicesApi.RegisterService();
+    CarServicesApi.RegisterService({
+      serviceName: this.state.service_Provider_name,
+      location: this.state.location
+    }).then(
+      (response) => {
+        alert(response.data);
+        alert('Service Registered Successfully')
+        this.props.navigate(`/subservicesRegistration/${response.data}`)
+        console.log("Reached here")
+      }
+    ).catch(
+      () => {
+        alert('Error Registering. Try using different name for service');
 
-    this.props.navigate('/servicesDetails')
+      }
+    )
+
+    //  this.props.navigate('/servicesDetails')
   }
 }
