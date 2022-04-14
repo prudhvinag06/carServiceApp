@@ -51,4 +51,13 @@ public class CarRestServices {
     public List<SubServiceDetails> getSubServices(@PathVariable Long serviceProviderID) {
         return subServiceJpaRepository.findByServiceProviderID(serviceProviderID);
     }
+
+    @GetMapping("/users/logincheck/{email}/{password}")
+    public boolean getSubServices(@PathVariable String email, @PathVariable String password) {
+        UserDetails details = detailsJpaRepository.findUserDetailsByEmailAndPassword(email, password);
+        if(details == null)
+            return false;
+        else
+        return true;
+    }
 }

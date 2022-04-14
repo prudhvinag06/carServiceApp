@@ -38,10 +38,11 @@ class CarServicesApi {
         return res;
     }
 
-    
-
-
-
+    checkLoginStatus = async (email, password) => {
+        console.log('Reached Sub Service Function');
+        const res = await axios.get(`http://localhost:8557/users/logincheck/${email}/${password}`);
+        return res;
+    }
 }
 
 export default new CarServicesApi();
