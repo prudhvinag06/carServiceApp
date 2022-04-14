@@ -42,7 +42,7 @@ export default class SubServicesComponent extends Component {
                         subServices =>
                         
                           <tr>
-                            <span><input size={1} type="checkbox" id={subServices.id}  name="period" onChange = {() => this.calculatePrice(subServices.id)}/></span>
+                            <span><input size={1} type="checkbox" id={subServices.id}  name="period" onChange = {() => this.calculatePrice(subServices.id, subServices.cost)}/></span>
                             {/* <td>{subServices.id}</td> */}
                             <td>{subServices.service_name}</td>
                             <td>{subServices.cost} </td>
@@ -70,8 +70,8 @@ export default class SubServicesComponent extends Component {
         this.props.navigate('/paymentComponent')
     }
 
-    calculatePrice(cost){
-        var status = document.getElementById(cost);
+    calculatePrice(id, cost){
+        var status = document.getElementById(id);
         var x = status.checked
         console.log(x)
         if(x === true)
