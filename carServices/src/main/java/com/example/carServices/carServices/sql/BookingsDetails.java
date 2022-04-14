@@ -1,8 +1,6 @@
 package com.example.carServices.carServices.sql;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class BookingsDetails{
@@ -49,8 +47,9 @@ public class BookingsDetails{
         this.date = date;
     }
 
+    @TableGenerator(name = "booking_id", initialValue = 10000, allocationSize = 100)
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "booking_id")
     private long booking_id;
 
     private long user_id;

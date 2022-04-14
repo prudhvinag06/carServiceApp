@@ -10,6 +10,7 @@ export default class SubServicesComponent extends Component {
         }
         this.refreshSubServices = this.refreshSubServices.bind(this)
         this.calculatePrice = this.calculatePrice.bind(this)
+        this.payment = this.payment.bind(this)
     }
     
     componentDidMount() {
@@ -25,13 +26,12 @@ export default class SubServicesComponent extends Component {
     render() {
         return (
             <div>
-                {/* <h1>SubServicesPage {this.props.params.id}</h1> */}
                 <div className="container">
                 <table className="table">
-                <h1>Car Services</h1>
+                <h1>Select the car services</h1>
                         <tr>
                             <th></th>
-                            <th>Id</th>
+                            {/* <th>Id</th> */}
                             <th>Description</th>
                             <th>Cost</th>
                             
@@ -40,16 +40,21 @@ export default class SubServicesComponent extends Component {
                     {
                       this.state.subServices.map(
                         subServices =>
+                        
                           <tr>
-                            <td><input type="checkbox" id={subServices.id}  name="period" onChange = {() => this.calculatePrice(subServices.id)}/></td>
-                            <td>{subServices.id}</td>
-                            <td>{subServices.service_name} </td>
+                            <span><input size={1} type="checkbox" id={subServices.id}  name="period" onChange = {() => this.calculatePrice(subServices.id)}/></span>
+                            {/* <td>{subServices.id}</td> */}
+                            <td>{subServices.service_name}</td>
                             <td>{subServices.cost} </td>
                           </tr>
                       )
                     }
                     <tr>
                         <h2>Total : ₹{this.state.price}</h2>
+                    </tr>
+                    <tr>
+                    <td><button type = "button" className="btn btn-success" onClick = {() => this.payment(this.state.price)} >Complete Payment</button></td>
+
                     </tr>
 
                   </tbody>
@@ -58,6 +63,11 @@ export default class SubServicesComponent extends Component {
               </div>
             </div>
         )
+    }
+
+    payment(price){
+        console.log(price)
+        this.props.navigate('/paymentComponent')
     }
 
     calculatePrice(cost){

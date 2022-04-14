@@ -7,7 +7,6 @@ import reportWebVitals from './reportWebVitals';
 import CarServiceComponents from './CarServiceComponents/CarAppComponent.jsx';
 import WelcomeComponent from './CarServiceComponents/WelcomeComponent'
 import CarAppComponent from './CarServiceComponents/CarAppComponent.jsx';
-import CarApiServices from './ApiServices/CarApiServices.jsx';
 
 ReactDOM.render(
   

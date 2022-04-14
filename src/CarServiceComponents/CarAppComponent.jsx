@@ -11,6 +11,7 @@ import ServicesDetails from "./ServicesDetails";
 import SubservicesRegistration from "./SubservicesRegistration";
 import SubServicesComponent from "./SubServicesComponent";
 import withParams from "./WithParams.jsx";
+import PaymentComponent from "./PaymentComponent";
 
 class CarAppComponent extends Component{
     render(){
@@ -23,7 +24,7 @@ class CarAppComponent extends Component{
         const ServicesDetailswithNavigation = withNavigation(ServicesDetails);
         const SubServicesRegistrationwithNavigation = withParams(withNavigation(SubservicesRegistration));
         const SubServicesComponentwithNavigation = withParams(withNavigation(SubServicesComponent));
-
+        const PaymentComponentwithNavigation = withNavigation(PaymentComponent);
         return(
             <div className="CarApp">
                 <Router>
@@ -38,6 +39,7 @@ class CarAppComponent extends Component{
                         <Route path="/servicesDetails" element={<ServicesDetailswithNavigation />} />
                         <Route path="/subservicesRegistration/:id" element={<SubServicesRegistrationwithNavigation />} />
                         <Route path="/subservicesDisplay/:id" element={<SubServicesComponentwithNavigation />}/>
+                        <Route path="/paymentComponent" element={<PaymentComponentwithNavigation />}/>
 
                     </Routes>
                 </Router>
