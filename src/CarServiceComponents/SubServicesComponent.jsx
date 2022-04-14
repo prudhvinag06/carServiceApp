@@ -20,9 +20,8 @@ export default class SubServicesComponent extends Component {
         this.setState({ subServices: response.data }) 
       )
     }
-    calculatePrice(cost){
-       // this.setState({price : this.state.price + cost})
-    }
+    
+
     render() {
         return (
             <div>
@@ -31,6 +30,7 @@ export default class SubServicesComponent extends Component {
                 <table className="table">
                 <h1>Car Services</h1>
                         <tr>
+                            <th></th>
                             <th>Id</th>
                             <th>Description</th>
                             <th>Cost</th>
@@ -38,22 +38,18 @@ export default class SubServicesComponent extends Component {
                         </tr>
                   <tbody>
                     {
-                      
                       this.state.subServices.map(
                         subServices =>
-                        
                           <tr>
-                            <td><input type="checkbox" id="vehicle1" value = {subServices.id} name="vehicle1" value="Bike" onClick={this.calculatePrice(subServices.id)}/></td>
+                            <td><input type="checkbox" id={subServices.id}  name="period" onChange = {() => this.calculatePrice(subServices.id)}/></td>
                             <td>{subServices.id}</td>
                             <td>{subServices.service_name} </td>
                             <td>{subServices.cost} </td>
-                            
-                            {/* <td><button className="btn btn-success" onClick = {() => this.onBook(service.id)} >Book</button></td> */}
                           </tr>
                       )
                     }
                     <tr>
-                        <h2>Total : {this.state.price}</h2>
+                        <h2>Total : ₹{this.state.price}</h2>
                     </tr>
 
                   </tbody>
@@ -63,6 +59,15 @@ export default class SubServicesComponent extends Component {
             </div>
         )
     }
+
+    calculatePrice(cost){
+        var status = document.getElementById(cost);
+        var x = status.checked
+        console.log(x)
+        if(x === true)
+            this.setState({price : this.state.price + cost})
+        else  this.setState({price : this.state.price - cost})
+        }
 
     
 }
