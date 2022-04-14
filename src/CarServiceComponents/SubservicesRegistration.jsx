@@ -3,7 +3,7 @@ import CarServicesApi from '../ApiServices/CarServicesApi';
 
 
 
-export default class subservicesRegistration extends Component {
+export default class SubservicesRegistration extends Component {
 
     constructor(props) {
         super(props);

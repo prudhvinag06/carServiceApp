@@ -32,6 +32,12 @@ class CarServicesApi {
         return res;
     }
 
+    getSubServices = async (id) => {
+        console.log('Reached Sub Service Function');
+        const res = await axios.get(`http://localhost:8557/users/services/getSubServices/${id}`);
+        return res;
+    }
+
 
 
 }

@@ -22,10 +22,6 @@ public class CarRestServices {
     @Autowired
     private SubServiceJpaRepository subServiceJpaRepository;
 
-//    @GetMapping("/users/city/services/getAllServices")
-//    public List<UserDetails.Services> getAllServices(){
-//        return servicesHardCoded.getServices();
-//    }
 
     @PostMapping("/users/register/")
     public Long addUser(@RequestBody UserDetails details){
@@ -49,5 +45,10 @@ public class CarRestServices {
     @GetMapping("/users/services/getAllServices")
     public List<Service> getAllServices(){
        return serviceJpaRepository.findAll();
+    }
+
+    @GetMapping("/users/services/getSubServices/{serviceProviderID}")
+    public List<SubServiceDetails> getSubServices(@PathVariable Long serviceProviderID) {
+        return subServiceJpaRepository.findByServiceProviderID(serviceProviderID);
     }
 }
