@@ -4,7 +4,7 @@ export default class PaymentComponent extends Component {
   render() {
     return (
       <div><h1>
-          Service Booked Successfully
+          Service Bookeds Successfully
           </h1></div>
     )
   }
