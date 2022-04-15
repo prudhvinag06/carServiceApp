@@ -57,7 +57,6 @@ public class CarRestServices {
         UserDetails details = detailsJpaRepository.findUserDetailsByEmailAndPassword(email, password);
         if(details == null)
             return false;
-        else
-        return true;
+        else return true;
     }
 }
