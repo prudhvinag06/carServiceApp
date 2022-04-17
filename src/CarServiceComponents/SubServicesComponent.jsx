@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Route } from 'react-router-dom';
 import CarServicesApi from '../ApiServices/CarServicesApi';
 
 export default class SubServicesComponent extends Component {
@@ -6,7 +7,8 @@ export default class SubServicesComponent extends Component {
         super(props);
         this.state = {
             subServices: [],
-            price: 0
+            price: 0,
+            user_id : 0
         }
         this.refreshSubServices = this.refreshSubServices.bind(this)
         this.calculatePrice = this.calculatePrice.bind(this)
@@ -70,7 +72,13 @@ export default class SubServicesComponent extends Component {
         if (price == 0)
             alert('select any service');
         else{
-            this.props.navigate(`/paymentComponent/${this.props.params.id}/${this.state.price}`)
+            let emailId = sessionStorage.getItem('authenticatedUser');
+            console.log(emailId);
+            let id = CarServicesApi.getUserIdFromEmail(emailId).then((response) => 
+
+                this.props.navigate(`/paymentComponent/${response.data}/${this.props.params.id}/${this.state.price}`)
+            )
+         //   console.log(this.state.user_id);
         }
             
     }
