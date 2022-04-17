@@ -29,19 +29,19 @@ public class SubServiceDetails {
         this.cost = cost;
     }
 
-    public long getServiceProvider_id() {
-        return serviceProvider_id;
+    public long getServiceProviderID() {
+        return serviceProviderID;
     }
 
     public void setServiceProvider_id(long serviceProvider_id) {
-        this.serviceProvider_id = serviceProvider_id;
+        this.serviceProviderID = serviceProvider_id;
     }
 
-    public SubServiceDetails(long id, String service_name, long cost, long serviceProvider_id) {
+    public SubServiceDetails(long id, String service_name, long cost, long serviceProviderID) {
         this.id = id;
         this.service_name = service_name;
         this.cost = cost;
-        this.serviceProvider_id = serviceProvider_id;
+        this.serviceProviderID = serviceProviderID;
     }
 
     @Id
@@ -50,5 +50,5 @@ public class SubServiceDetails {
     @Column(unique = true)
     private String service_name;
     private long cost;
-    private long serviceProvider_id;
+    private long serviceProviderID;
 }

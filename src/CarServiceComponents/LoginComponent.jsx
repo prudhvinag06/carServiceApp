@@ -2,6 +2,7 @@ import { Component } from 'react';
 import '../App.css';
 import '../App2.css';
 import { Navigate } from 'react-router-dom'
+import CarServicesApi from '../ApiServices/CarServicesApi';
 
 class LoginComponent extends Component {
   constructor(props) {
@@ -23,14 +24,14 @@ class LoginComponent extends Component {
           <div className="container signin">
             <p>New user? <a href="#" onClick={this.Signup}>Sign up</a>.</p>
           </div>
-          
+
 
           <label for="email"><b>Email</b></label>
           <input type="text" placeholder="Enter Email" name="email" id="email" required value={this.state.email} onChange={this.handleChange}></input>
 
           <label for="psw"><b>Password</b></label>
-          <input type = "password" placeholder="Enter Password" name = "password" value = {this.state.password} onChange = {this.handleChange}/>         
-                   {/* below always use button as type and not submit. This can fuck u for many hours */}
+          <input type="password" placeholder="Enter Password" name="password" value={this.state.password} onChange={this.handleChange} />
+          {/* below always use button as type and not submit. This can fuck u for many hours */}
           <button type="button" className="registerbtn" onClick={this.LoginClicked}>Login</button>
 
         </form>
@@ -39,17 +40,27 @@ class LoginComponent extends Component {
       </div>
     )
   }
-  
-  LoginClicked(){
-    if(this.state.email == "admin@gmail.com"){
+
+  LoginClicked() {
+    if (this.state.email == "admin@gmail.com") {
       this.props.navigate('/adminPage')
     }
-    else{
-      this.props.navigate('/welcomePage')
+    else {
+      CarServicesApi.checkLoginStatus(this.state.email, this.state.password).then(
+        (response) => {
+          if(response.data === false){
+            alert('Wrong username and password. Try Again');
+          }
+          else{
+            alert('Login Details Correct')
+            this.props.navigate('/welcomePage')
+          }
+          
+        }
+      )
     }
     console.log('Login Button Clicked!')
     console.log(this.state.email);
-    
   }
 
   handleChange(event) {
@@ -64,7 +75,7 @@ class LoginComponent extends Component {
     this.props.navigate(`/signup`)
   }
 
- 
+
 
 
 }
