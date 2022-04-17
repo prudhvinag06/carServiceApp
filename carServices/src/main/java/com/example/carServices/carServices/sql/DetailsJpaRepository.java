@@ -8,4 +8,8 @@ import java.util.List;
 @Repository
 public interface DetailsJpaRepository extends JpaRepository<UserDetails, Long> {
     UserDetails findUserDetailsByEmailAndPassword(String email, String password);
+
+    UserDetails findByUsername(String username);
+
+    UserDetails findByEmail(String email);
 }

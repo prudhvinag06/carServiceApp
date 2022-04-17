@@ -69,8 +69,10 @@ export default class SubServicesComponent extends Component {
         console.log(price)
         if (price == 0)
             alert('select any service');
-        else
-            this.props.navigate('/paymentComponent')
+        else{
+            this.props.navigate(`/paymentComponent/${this.props.params.id}/${this.state.price}`)
+        }
+            
     }
 
     calculatePrice(id, cost) {

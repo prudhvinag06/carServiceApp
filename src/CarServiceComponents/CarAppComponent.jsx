@@ -24,7 +24,7 @@ class CarAppComponent extends Component{
         const ServicesDetailswithNavigation = withNavigation(ServicesDetails);
         const SubServicesRegistrationwithNavigation = withParams(withNavigation(SubservicesRegistration));
         const SubServicesComponentwithNavigation = withParams(withNavigation(SubServicesComponent));
-        const PaymentComponentwithNavigation = withNavigation(PaymentComponent);
+        const PaymentComponentwithNavigation = withParams(withNavigation(PaymentComponent));
         return(
             <div className="CarApp">
                 <Router>
@@ -39,7 +39,7 @@ class CarAppComponent extends Component{
                         <Route path="/servicesDetails" element={<ServicesDetailswithNavigation />} />
                         <Route path="/subservicesRegistration/:id" element={<SubServicesRegistrationwithNavigation />} />
                         <Route path="/subservicesDisplay/:id" element={<SubServicesComponentwithNavigation />}/>
-                        <Route path="/paymentComponent" element={<PaymentComponentwithNavigation />}/>
+                        <Route path="/paymentComponent/:id/:price" element={<PaymentComponentwithNavigation />}/>
 
                     </Routes>
                 </Router>

@@ -76,6 +76,7 @@ export default class SubservicesRegistration extends Component {
               alert('Sub Service Registered Successfully')
               this.props.navigate(`/subservicesRegistration/${this.props.params.id}`)
               //console.log("Reached here")
+              this.setState({sub_service_name : '', cost : ''})
             }
           ).catch(
             () => {

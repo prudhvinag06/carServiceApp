@@ -59,4 +59,10 @@ public class CarRestServices {
             return false;
         else return true;
     }
+
+    @GetMapping("/users/getIdFromUsername/{email}")
+    public Long getIdFromUserName(@PathVariable String email){
+        UserDetails details = detailsJpaRepository.findByEmail(email);
+        return details.getUser_id();
+    }
 }

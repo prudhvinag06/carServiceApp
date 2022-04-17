@@ -68,6 +68,7 @@ class SignupComponent extends Component {
       </div>
     )
   }
+  
   handleChange(event) {
     // console.log(event.target.value)
     this.setState(
@@ -79,12 +80,6 @@ class SignupComponent extends Component {
     console.log('Login Clicked!');
     this.props.navigate(`/login`)
   }
-
- 
-
-  
-
-
 }
 
 export default SignupComponent;
