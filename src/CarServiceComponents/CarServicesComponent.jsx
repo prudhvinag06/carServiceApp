@@ -22,13 +22,8 @@ class CarServicesComponent extends Component {
     this.logout = this.logout.bind(this);
     this.onDropDownChange = this.onDropDownChange.bind(this);
   }
-  onDropDownChange(val){
-  //  alert("s", event.target.value)
-   this.setState({selectedLocation : val.value})
-  
-    alert(this.state.selectedLocation)
+  onDropDownChange(){
     this.componentDidMount();
-    
   }
   componentDidMount() {
     this.refreshServices();
@@ -51,12 +46,12 @@ class CarServicesComponent extends Component {
   render() {
     return (
       <div>
-        {/* <NavBarComponent val = "Car Services Component"></NavBarComponent> */}
 
         <div>
           <label for="cars">Choose a location:</label>
+          {/* Below is an async setState call which can be very useful */}
+          <select id = "location" onChange = {(e) => this.setState({selectedLocation : document.getElementById('location').value}, () => {this.onDropDownChange()})} name="cars">
 
-          <select id = "location" onClick = {() => this.onDropDownChange(document.getElementById('location'))} name="cars">
             <option value="Bangalore">Bangalore</option>
             <option value="Hyderabad">Hyderabad</option>
           </select>
