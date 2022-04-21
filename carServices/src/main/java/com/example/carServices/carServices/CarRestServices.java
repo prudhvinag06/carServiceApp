@@ -65,4 +65,12 @@ public class CarRestServices {
         UserDetails details = detailsJpaRepository.findByEmail(email);
         return details.getUser_id();
     }
+
+    @GetMapping("/users/services/getAllServicesWithLocation/{location}")
+    public List<Service> getAllServicesWithLocation(@PathVariable String location) {
+        System.out.println("sss " + location);
+        List<Service> serviceWithLocation = serviceJpaRepository.findByLocation(location);
+       // System.out.println(serviceWithLocation.get(0).getLocation());
+        return serviceWithLocation;
+    }
 }

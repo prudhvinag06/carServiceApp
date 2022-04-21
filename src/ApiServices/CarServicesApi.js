@@ -25,9 +25,16 @@ class CarServicesApi {
         return res;
     }
 
-    getServices = async () => {
+    getServices = async (location) => {
+        console.log(location)
         console.log('Reached Sub Service Register Service');
         const res = await axios.get("http://localhost:8557/users/services/getAllServices");
+       // console.log(res.data)
+        return res;
+    }
+
+    getServicesWithLocation = async (location) => {
+        const res = await axios.get(`http://localhost:8557/users/services/getAllServicesWithLocation/${location}`);
        // console.log(res.data)
         return res;
     }
