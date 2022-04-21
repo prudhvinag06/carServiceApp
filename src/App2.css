@@ -42,6 +42,16 @@ hr {
 .registerbtn:hover {
   opacity:1;
 }
+.btncolor{
+  background-color: #1b1b1b;
+  color: #f1f1f1;
+  position:absolute;
+     top:0;
+     right:0;
+}
+.backButton {
+  background-color: black;
+}
 
 /* Add a blue text color to links */
 a {

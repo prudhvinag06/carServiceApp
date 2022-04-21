@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import CarServicesApi from '../ApiServices/CarServicesApi';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -14,6 +15,8 @@ export default class SubservicesRegistration extends Component {
         }
         this.handleChange = this.handleChange.bind(this);
         this.RegisterSubService = this.RegisterSubService.bind(this);
+        this.back = this.back.bind(this)
+
     }
 
     render() {
@@ -21,7 +24,10 @@ export default class SubservicesRegistration extends Component {
         console.log(this.props.params.id)
         return (
             <div>
+
                 <div className="container">
+                    <button className = "btn btn-success" id = "btn btn-success" onClick = {this.back}>back</button>
+
                     <h1>Admin Sub-Services Registration</h1>
                     <p>Please fill sub-services details</p>
 
@@ -65,7 +71,9 @@ export default class SubservicesRegistration extends Component {
           { [event.target.name]: event.target.value }
         )
     }
-
+    back(){
+        this.props.navigate(-1)
+    }
     RegisterSubService(){
         CarServicesApi.RegisterSubService({
             service_name : this.state.sub_service_name,

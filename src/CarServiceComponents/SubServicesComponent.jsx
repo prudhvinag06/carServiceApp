@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { Route } from 'react-router-dom';
 import CarServicesApi from '../ApiServices/CarServicesApi';
+import { useNavigate } from 'react-router-dom';
+import '../App.css';
 
 export default class SubServicesComponent extends Component {
     constructor(props) {
@@ -13,6 +14,7 @@ export default class SubServicesComponent extends Component {
         this.refreshSubServices = this.refreshSubServices.bind(this)
         this.calculatePrice = this.calculatePrice.bind(this)
         this.payment = this.payment.bind(this)
+        this.back = this.back.bind(this)
     }
 
     componentDidMount() {
@@ -26,9 +28,11 @@ export default class SubServicesComponent extends Component {
 
 
     render() {
+        const { navigation } = this.props;
         return (
             <div>
                 <div className="container">
+                    <button className = "btn btn-success" id = "btn btn-success" onClick = {this.back}>back</button>
                     <table className="table">
                         <h1>Select the car services</h1>
                         <tr>
@@ -42,7 +46,6 @@ export default class SubServicesComponent extends Component {
                             {
                                 this.state.subServices.map(
                                     subServices =>
-
                                         <tr>
                                             <span><input size={1} type="checkbox" id={subServices.id} name="period" onChange={() => this.calculatePrice(subServices.id, subServices.cost)} /></span>
                                             {/* <td>{subServices.id}</td> */}
@@ -82,7 +85,9 @@ export default class SubServicesComponent extends Component {
         }
             
     }
-
+    back(){
+        this.props.navigate(-1)
+    }
     calculatePrice(id, cost) {
         var status = document.getElementById(id);
         var x = status.checked
