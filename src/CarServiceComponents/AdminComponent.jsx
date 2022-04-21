@@ -3,6 +3,8 @@ import React, { Component } from 'react'
 import '../App.css';
 import '../App2.css';
 import CarServicesApi from '../ApiServices/CarServicesApi';
+import AuthenticationService from './AuthenticationService';
+import { Navigate } from 'react-router-dom'
 
 export default class AdminComponent extends Component {
 
@@ -14,13 +16,15 @@ export default class AdminComponent extends Component {
     }
     this.handleChange = this.handleChange.bind(this);
     this.RegisterService = this.RegisterService.bind(this);
+    this.logout = this.logout.bind(this)
 
   }
 
   render() {
     return (
       <div className="container">
-        
+        <button className = "btn btn-success btncolor" id = "btn btn-success" onClick = {this.logout}>logout</button>
+
 
         <h1>Admin Services Page</h1>
         <p>Please fill services details</p>
@@ -52,7 +56,12 @@ export default class AdminComponent extends Component {
       { [event.target.name]: event.target.value }
     )
   }
-
+  logout(){
+    console.log('Logout is clicked!')
+    AuthenticationService.logout(1);
+    alert('admin logged out successfully');
+    this.props.navigate('/login');
+  }
   RegisterService() {
     console.log(this.state.service_Provider_name);
     console.log(this.state.location);

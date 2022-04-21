@@ -44,6 +44,7 @@ class LoginComponent extends Component {
 
   LoginClicked() {
     if (this.state.email == "admin@gmail.com") {
+      AuthenticationService.registerSuccessfulLogin(this.state.email, this.state.password, 1);
       this.props.navigate('/adminPage')
     }
     else {
@@ -55,7 +56,7 @@ class LoginComponent extends Component {
           else{
             alert('Login Details Correct')
             this.props.navigate('/welcomePage')
-            AuthenticationService.registerSuccessfulLogin(this.state.email, this.state.password);
+            AuthenticationService.registerSuccessfulLogin(this.state.email, this.state.password, 0);
           }
           
         }
