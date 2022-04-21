@@ -3,6 +3,7 @@ import '../App.css';
 import '../App2.css';
 import { Navigate } from 'react-router-dom'
 import CarServicesApi from '../ApiServices/CarServicesApi';
+import AuthenticationService from './AuthenticationService.js';
 
 class LoginComponent extends Component {
   constructor(props) {
@@ -54,6 +55,7 @@ class LoginComponent extends Component {
           else{
             alert('Login Details Correct')
             this.props.navigate('/welcomePage')
+            AuthenticationService.registerSuccessfulLogin(this.state.email, this.state.password);
           }
           
         }

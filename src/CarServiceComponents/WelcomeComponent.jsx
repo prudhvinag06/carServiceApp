@@ -3,6 +3,7 @@ import '../navbar.css';
 import { Navigate } from 'react-router-dom'
 import NavBarComponent from './NavBarComponent'
 import '../style.css';
+import AuthenticationService from './AuthenticationService';
 class WelcomeComponent extends Component {
   constructor(props) {
     super(props);
@@ -11,6 +12,7 @@ class WelcomeComponent extends Component {
     }
     this.carServicesComp = this.carServicesComp.bind(this);
     this.carBookingsComp = this.carBookingsComp.bind(this);
+    this.logout = this.logout.bind(this);
   }
   render() {
     return (
@@ -46,6 +48,7 @@ class WelcomeComponent extends Component {
                   <a href="#"><i className="fab fa-github"></i></a>
                   <a href="#"><i className="fab fa-youtube"></i></a>
                </div> */}
+                <li><a href="#" onClick={this.logout}><i className="fas fa-envelope"></i>Logout</a></li>
               </ul>
             </nav>
           </div>
@@ -74,6 +77,20 @@ class WelcomeComponent extends Component {
   carBookingsComp() {
     console.log("bookinsadffsfgs");
     this.props.navigate('/carBookings')
+  }
+
+  logout(){
+    console.log('Logout is clicked!')
+    AuthenticationService.logout();
+    alert('logged out successfully');
+    this.props.navigate('/login');
+  }
+
+  isUserLoggedin(){
+    let user = sessionStorage.getItem('authenticatedUser')
+    if(user === null)
+    return false;
+    else return true;
   }
   // myAccountComp() {
   //   console.log("account");

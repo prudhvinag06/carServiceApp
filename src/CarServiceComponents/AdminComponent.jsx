@@ -20,9 +20,12 @@ export default class AdminComponent extends Component {
   render() {
     return (
       <div className="container">
+        
+
         <h1>Admin Services Page</h1>
         <p>Please fill services details</p>
         <form>
+
           <label><b>Service Provider Name</b></label>
           <input type="text" placeholder="Enter Provider Name" name="service_Provider_name" id="email" required value={this.state.service_Provider_name} onChange={this.handleChange}></input>
 

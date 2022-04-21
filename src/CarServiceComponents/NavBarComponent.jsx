@@ -11,6 +11,9 @@ export default class NavBarComponent extends Component {
       this.state = {
 
       }
+
+      // this.carServicesComp = this.carServicesComp.bind(this);
+      // this.carBookingsComp = this.carBookingsComp.bind(this);
    }
 
    render() {
@@ -44,6 +47,8 @@ export default class NavBarComponent extends Component {
                <li><a href="#"><i class="fas fa-user"></i>About us</a></li>
                <li><a href="#"><i class="fas fa-globe-asia"></i>Languages</a></li> */}
                         <li><a href="#" onClick={this.contactComp}><i className="fas fa-envelope"></i>Contact us</a></li>
+                        <li><a href="#" onClick={this.logout}><i className="fas fa-envelope"></i>Logout</a></li>
+
                         {/* <div className="icons">
                   <a href="#"><i className="fab fa-facebook-f"></i></a>
                   <a href="#"><i className="fab fa-twitter"></i></a>
@@ -72,15 +77,18 @@ export default class NavBarComponent extends Component {
       
    }
 
-   carServicesComp() {
-      console.log("services")
-      WelcomeComponent.carBookingsComp();
-    }
+   // carServicesComp() {
+   //    console.log("services")
+   //    // WelcomeComponent.carBookingsComp();
+   //    this.props.navigate('/carServices')
+   //  }
 
-    carBookingsComp(){
-       console.log("Bookings from nav bar")
-       WelcomeComponent.carBookingsComp();
-    }
+   //  carBookingsComp(){
+   //     console.log("Bookings from nav bar")
+   //    //  WelcomeComponent.carBookingsComp();
+   //  }
+
+
 
 
 

@@ -7,6 +7,7 @@ import LoginComponent from './LoginComponent';
 import CarServicesApi from '../ApiServices/CarServicesApi';
 import { Button } from 'react-bootstrap';
 import Card from "react-bootstrap/Card";
+import AuthenticationService from './AuthenticationService';
 class CarServicesComponent extends Component {
   constructor(props) {
     super(props);
@@ -17,6 +18,7 @@ class CarServicesComponent extends Component {
     this.carBookingsComp = this.carBookingsComp.bind(this);
     this.refreshServices = this.refreshServices.bind(this);
     this.onBook = this.onBook.bind(this);
+    this.logout = this.logout.bind(this);
   }
   componentDidMount() {
     this.refreshServices();
@@ -63,6 +65,8 @@ class CarServicesComponent extends Component {
                <li><a href="#"><i class="fas fa-user"></i>About us</a></li>
                <li><a href="#"><i class="fas fa-globe-asia"></i>Languages</a></li> */}
                     <li><a href="#" onClick={this.contactComp}><i className="fas fa-envelope"></i>Contact us</a></li>
+                    <li><a href="#" onClick={this.logout}><i className="fas fa-envelope"></i>Logout</a></li>
+
                   </ul>
                 </nav>
               </div>
@@ -115,6 +119,13 @@ class CarServicesComponent extends Component {
     console.log("clicked on Book");
     this.props.navigate(`/subservicesDisplay/${id}`)
   //  this.props.navigate(`/subservicesRegistration/${response.data}`)
+  }
+
+  logout(){
+    console.log('Logout is clicked!')
+    AuthenticationService.logout();
+    alert('logged out successfully');
+    this.props.navigate('/login');
   }
 
 

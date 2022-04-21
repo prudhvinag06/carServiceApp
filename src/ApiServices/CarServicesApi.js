@@ -43,6 +43,13 @@ class CarServicesApi {
         const res = await axios.get(`http://localhost:8557/users/logincheck/${email}/${password}`);
         return res;
     }
+
+    getUserIdFromEmail = async (email) => {
+        console.log('Reached getUserIdFromUserName');
+        const res = await axios.get(`http://localhost:8557/users/getIdFromUsername/${email}`);
+        console.log(res);
+        return res;
+    }
 }
 
 export default new CarServicesApi();
