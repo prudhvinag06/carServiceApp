@@ -11,9 +11,15 @@ class AuthenticationService{
        
     }
 
+    registerSuccessfulLogin_id(user_id){
+        sessionStorage.setItem('authenticatedUser_id', user_id);
+    }
+
     logout(choice){
-        if(choice == 0)
-        sessionStorage.removeItem('authenticatedUser')
+        if(choice == 0){
+            sessionStorage.removeItem('authenticatedUser')
+            sessionStorage.removeItem('authenticatedUser_id')
+        }
         else sessionStorage.removeItem('authenticatedAdmin')
     }
 }

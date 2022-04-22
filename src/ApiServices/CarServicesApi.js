@@ -54,7 +54,7 @@ class CarServicesApi {
     getUserIdFromEmail = async (email) => {
         console.log('Reached getUserIdFromUserName');
         const res = await axios.get(`http://localhost:8557/users/getIdFromUsername/${email}`);
-        console.log(res);
+       // console.log(res.data);
         return res;
     }
 }

@@ -10,11 +10,13 @@ class LoginComponent extends Component {
     super(props);
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      user_id: ''
     }
     this.handleChange = this.handleChange.bind(this);
     this.Signup = this.Signup.bind(this);
     this.LoginClicked = this.LoginClicked.bind(this);
+    this.setUserId = this.setUserId.bind(this);
   }
   render() {
     return (
@@ -41,7 +43,9 @@ class LoginComponent extends Component {
       </div>
     )
   }
-
+  setUserId(user_id){
+    AuthenticationService.registerSuccessfulLogin_id(user_id);
+  }
   LoginClicked() {
     if (this.state.email == "admin@gmail.com") {
       AuthenticationService.registerSuccessfulLogin(this.state.email, this.state.password, 1);
@@ -54,9 +58,20 @@ class LoginComponent extends Component {
             alert('Wrong username and password. Try Again');
           }
           else{
+            var user_id = '';
             alert('Login Details Correct')
             this.props.navigate('/welcomePage')
+            CarServicesApi.getUserIdFromEmail(this.state.email).then((response) => 
+            {
+             // alert(response.data)
+              user_id = response.data;
+              this.setUserId(user_id);
+            }
+            )
+          // console.log(user_id)
             AuthenticationService.registerSuccessfulLogin(this.state.email, this.state.password, 0);
+            
+          //  alert(user_id)
           }
           
         }
