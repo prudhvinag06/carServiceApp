@@ -21,7 +21,8 @@ public class CarRestServices {
 
     @Autowired
     private SubServiceJpaRepository subServiceJpaRepository;
-
+    @Autowired
+    private BookServiceJpaRepository bookServiceJpaRepository;
 
     @PostMapping("/users/register/")
     public Long addUser(@RequestBody UserDetails details){
@@ -70,7 +71,12 @@ public class CarRestServices {
     public List<Service> getAllServicesWithLocation(@PathVariable String location) {
         System.out.println("sss " + location);
         List<Service> serviceWithLocation = serviceJpaRepository.findByLocation(location);
-       // System.out.println(serviceWithLocation.get(0).getLocation());
         return serviceWithLocation;
+    }
+
+    @PostMapping("users/services/bookService")
+    public Long addBookingDetails(@RequestBody BookingsDetails bookingsDetails ){
+        BookingsDetails bookingsDetails1 = bookServiceJpaRepository.save(bookingsDetails);
+        return bookingsDetails1.getBooking_id();
     }
 }

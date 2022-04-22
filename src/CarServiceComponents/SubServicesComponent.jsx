@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 import CarServicesApi from '../ApiServices/CarServicesApi';
 import { useNavigate } from 'react-router-dom';
 import '../App.css';
+import AuthenticationService from './AuthenticationService';
+import moment from "moment";
+ 
+
 
 export default class SubServicesComponent extends Component {
     constructor(props) {
@@ -9,7 +13,8 @@ export default class SubServicesComponent extends Component {
         this.state = {
             subServices: [],
             price: 0,
-            user_id : 0
+            user_id : 0,
+            date : moment(new Date()).format('YYYY-MM-DD')
         }
         this.refreshSubServices = this.refreshSubServices.bind(this)
         this.calculatePrice = this.calculatePrice.bind(this)
@@ -40,7 +45,6 @@ export default class SubServicesComponent extends Component {
                             {/* <th>Id</th> */}
                             <th>Description</th>
                             <th>Cost</th>
-
                         </tr>
                         <tbody>
                             {
@@ -71,17 +75,22 @@ export default class SubServicesComponent extends Component {
     }
 
     payment(price) {
-        console.log(price)
+        let userId = sessionStorage.getItem('authenticatedUser_id');
+        // alert(userId)
+        // console.log(price)
         if (price == 0)
             alert('select any service');
         else{
             let emailId = sessionStorage.getItem('authenticatedUser');
             console.log(emailId);
-            let id = CarServicesApi.getUserIdFromEmail(emailId).then((response) => 
-
-                this.props.navigate(`/paymentComponent/${response.data}/${this.props.params.id}/${this.state.price}`)
-            )
-         //   console.log(this.state.user_id);
+            CarServicesApi.bookServices({
+                cost : price,
+                user_id : userId,
+                service_id : this.props.params.id,
+                status : true,
+                date : this.state.date
+            });
+            this.props.navigate(`/paymentComponent/${userId}/${this.props.params.id}/${this.state.price}`)            
         }
             
     }
@@ -91,7 +100,7 @@ export default class SubServicesComponent extends Component {
     calculatePrice(id, cost) {
         var status = document.getElementById(id);
         var x = status.checked
-        console.log(x)
+       // console.log(x)
         if (x === true)
             this.setState({ price: this.state.price + cost })
         else this.setState({ price: this.state.price - cost })

@@ -19,6 +19,13 @@ class CarServicesApi {
         return res;
     }
 
+    bookServices = async (subservice) => {
+        alert('Reached book Services');
+        console.log(subservice)
+        const res = await axios.post("http://localhost:8557/users/services/bookService/", subservice);
+        return res;
+    }
+
     RegisterSubService = async (service) => {
         console.log('Reached Sub Service Register Service');
         const res = await axios.post("http://localhost:8557/admin/registerService/registerSubService", service);
