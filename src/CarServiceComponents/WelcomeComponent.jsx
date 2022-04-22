@@ -81,7 +81,7 @@ class WelcomeComponent extends Component {
 
   logout(){
     console.log('Logout is clicked!')
-    AuthenticationService.logout();
+    AuthenticationService.logout(0);
     alert('logged out successfully');
     this.props.navigate('/login');
   }

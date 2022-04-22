@@ -52,12 +52,23 @@ public class BookingsDetails{
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "booking_id")
     private long booking_id;
 
+    public long getCost() {
+        return cost;
+    }
+
+    public void setCost(long cost) {
+        this.cost = cost;
+    }
+
+    private long cost;
     private long user_id;
     private long service_id;
     private boolean status;
     private String date;
 
-    public BookingsDetails(long booking_id, long user_id, long service_id, boolean status, String date) {
+
+    public BookingsDetails(long cost, long booking_id, long user_id, long service_id, boolean status, String date) {
+        this.cost = cost;
         this.booking_id = booking_id;
         this.user_id = user_id;
         this.service_id = service_id;

@@ -1,44 +1,55 @@
 import { Component } from 'react';
 import '../navbar.css';
-import { Navigate } from 'react-router-dom'
-import NavBarComponent from './NavBarComponent'
 import '../style.css';
-import LoginComponent from './LoginComponent';
 import CarServicesApi from '../ApiServices/CarServicesApi';
-import { Button } from 'react-bootstrap';
-import Card from "react-bootstrap/Card";
 import AuthenticationService from './AuthenticationService';
 class CarServicesComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      services: []
+      services: [],
+      selectedLocation: 'Bangalore'
     }
     this.carServicesComp = this.carServicesComp.bind(this);
     this.carBookingsComp = this.carBookingsComp.bind(this);
     this.refreshServices = this.refreshServices.bind(this);
     this.onBook = this.onBook.bind(this);
     this.logout = this.logout.bind(this);
+    this.onDropDownChange = this.onDropDownChange.bind(this);
+  }
+  onDropDownChange(){
+    this.componentDidMount();
   }
   componentDidMount() {
     this.refreshServices();
+    console.log("Mount Component", this.state.selectedLocation)
   }
   refreshServices() {
     const value = []
-    CarServicesApi.getServices().then((response) =>
-      //  console.log(response.data)
+    // CarServicesApi.getServices(this.state.selectedLocation).then((response) =>
+    //   //  console.log(response.data)
+    //   this.setState({ services: response.data })
+    // )
+    //  console.log(this.state.services)
+    // var val = document.getElementById('location')
+    // alert(val.value);
+    CarServicesApi.getServicesWithLocation(this.state.selectedLocation).then((response) =>
       this.setState({ services: response.data })
     )
-    //  console.log(this.state.services)
+    console.log(this.state.services)
   }
   render() {
     return (
       <div>
-        {/* <NavBarComponent val = "Car Services Component"></NavBarComponent> */}
 
         <div>
-          {/* <NavBarComponent val = "Car Bookings Component"></NavBarComponent> */}
-          {/* <h1>Car Bookings Component</h1> */}
+          <label for="cars">Choose a location:</label>
+          {/* Below is an async setState call which can be very useful */}
+          <select id = "location" onChange = {(e) => this.setState({selectedLocation : document.getElementById('location').value}, () => {this.onDropDownChange()})} name="cars">
+
+            <option value="Bangalore">Bangalore</option>
+            <option value="Hyderabad">Hyderabad</option>
+          </select>
 
           <div>
             <title>Car Services</title>
@@ -70,27 +81,28 @@ class CarServicesComponent extends Component {
                   </ul>
                 </nav>
               </div>
-              
+
               <div className="container">
                 <table className="table">
-                <h1>Car Services</h1>
-                        <tr>
-                            <th>id</th>
-                            <th>Service Centre Name</th>
-                            <th>location</th>
-                            
-                        </tr>
+                  <h1>Car Services</h1>
+                  <tr>
+                    <th>id</th>
+                    <th>Service Centre Name</th>
+                    <th>location</th>
+
+                  </tr>
                   <tbody>
                     {
-                      
+
                       this.state.services.map(
                         service =>
+
                           <tr>
                             <td>{service.id} </td>
                             <td>{service.serviceName} </td>
                             <td>{service.location} </td>
-                            
-                            <td><button className="btn btn-success" onClick = {() => this.onBook(service.id)} >Book</button></td>
+
+                            <td><button className="btn btn-success" onClick={() => this.onBook(service.id)} >Book</button></td>
                           </tr>
                       )
                     }
@@ -114,14 +126,15 @@ class CarServicesComponent extends Component {
     console.log("bookinsadffsfgs");
     this.props.navigate('/carBookings')
   }
+  
 
-  onBook(id){
+  onBook(id) {
     console.log("clicked on Book");
     this.props.navigate(`/subservicesDisplay/${id}`)
-  //  this.props.navigate(`/subservicesRegistration/${response.data}`)
+    //  this.props.navigate(`/subservicesRegistration/${response.data}`)
   }
 
-  logout(){
+  logout() {
     console.log('Logout is clicked!')
     AuthenticationService.logout();
     alert('logged out successfully');

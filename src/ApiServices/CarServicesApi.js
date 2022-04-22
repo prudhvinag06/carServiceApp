@@ -19,15 +19,29 @@ class CarServicesApi {
         return res;
     }
 
+    bookServices = async (subservice) => {
+        alert('Reached book Services');
+        console.log(subservice)
+        const res = await axios.post("http://localhost:8557/users/services/bookService/", subservice);
+        return res;
+    }
+
     RegisterSubService = async (service) => {
         console.log('Reached Sub Service Register Service');
         const res = await axios.post("http://localhost:8557/admin/registerService/registerSubService", service);
         return res;
     }
 
-    getServices = async () => {
+    getServices = async (location) => {
+        console.log(location)
         console.log('Reached Sub Service Register Service');
         const res = await axios.get("http://localhost:8557/users/services/getAllServices");
+       // console.log(res.data)
+        return res;
+    }
+
+    getServicesWithLocation = async (location) => {
+        const res = await axios.get(`http://localhost:8557/users/services/getAllServicesWithLocation/${location}`);
        // console.log(res.data)
         return res;
     }
@@ -47,7 +61,7 @@ class CarServicesApi {
     getUserIdFromEmail = async (email) => {
         console.log('Reached getUserIdFromUserName');
         const res = await axios.get(`http://localhost:8557/users/getIdFromUsername/${email}`);
-        console.log(res);
+       // console.log(res.data);
         return res;
     }
 }
