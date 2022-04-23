@@ -14,5 +14,7 @@ values (1, 'prudhvinag637@gmail.com', 'abc', 'prudhvinag637');
 insert into SUB_SERVICE_DETAILS(id, service_name, cost, SERVICE_PROVIDERID)
 values (1000, 'car wash', 200, 1);
 insert into SUB_SERVICE_DETAILS(id, service_name, cost, SERVICE_PROVIDERID)
+values (1002, 'car repair', 400, 1);
+insert into SUB_SERVICE_DETAILS(id, service_name, cost, SERVICE_PROVIDERID)
 values (1001, 'car clean', 200, 2);
 

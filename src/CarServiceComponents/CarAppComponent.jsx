@@ -38,7 +38,7 @@ class CarAppComponent extends Component{
                         <Route path="/adminPage" element={<AdminComponentwithNavigation />} />
                         <Route path="/servicesDetails" element={<ServicesDetailswithNavigation />} />
                         <Route path="/subservicesRegistration/:id" element={<SubServicesRegistrationwithNavigation />} />
-                        <Route path="/subservicesDisplay/:id" element={<SubServicesComponentwithNavigation />}/>
+                        <Route path="/subservicesDisplay/:id/:serviceName" element={<SubServicesComponentwithNavigation />}/>
                         <Route path="/paymentComponent/:email/:id/:price" element={<PaymentComponentwithNavigation />}/>
 
                     </Routes>

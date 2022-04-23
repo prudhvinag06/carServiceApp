@@ -79,4 +79,11 @@ public class CarRestServices {
         BookingsDetails bookingsDetails1 = bookServiceJpaRepository.save(bookingsDetails);
         return bookingsDetails1.getBooking_id();
     }
+
+    @GetMapping("users/bookings/{user_id}")
+    public List<BookingsDetails> getCurrentBookins(@PathVariable Long user_id){
+        List<BookingsDetails> bookingsDetails1 = bookServiceJpaRepository.findByUser_Id(user_id);
+
+        return bookingsDetails1;
+    }
 }

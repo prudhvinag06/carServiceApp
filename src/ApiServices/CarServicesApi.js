@@ -64,6 +64,13 @@ class CarServicesApi {
        // console.log(res.data);
         return res;
     }
+
+    getCurrentBookings = async (userid) => {
+        console.log('Reached getUserIdFromUserName');
+        const res = await axios.get(`http://localhost:8557/users/bookings/${userid}`);
+        console.log(res.data);
+        return res;
+    }
 }
 
 export default new CarServicesApi();

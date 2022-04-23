@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import NavBarComponent from './NavBarComponent'
-
+import AuthenticationService from './AuthenticationService';
 export default class PaymentComponent extends Component {
   constructor(props) {
     super(props);
@@ -9,6 +9,7 @@ export default class PaymentComponent extends Component {
     }
     this.carServicesComp = this.carServicesComp.bind(this);
     this.carBookingsComp = this.carBookingsComp.bind(this);
+    this.logout = this.logout.bind(this);
   }
   render() {
     return (
@@ -68,5 +69,12 @@ export default class PaymentComponent extends Component {
   carBookingsComp() {
     console.log("bookinsadffsfgs");
     this.props.navigate('/carBookings')
+  }
+
+  logout(){
+    console.log('Logout is clicked!')
+    AuthenticationService.logout(0);
+    alert('logged out successfully');
+    this.props.navigate('/login');
   }
 }

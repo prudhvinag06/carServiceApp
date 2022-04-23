@@ -3,6 +3,7 @@ package com.example.carServices.carServices.sql;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "Bookings_Details")
 public class BookingsDetails{
 
     public BookingsDetails(){}
@@ -66,14 +67,25 @@ public class BookingsDetails{
     private boolean status;
     private String date;
 
+    public String getService_name() {
+        return service_name;
+    }
 
-    public BookingsDetails(long cost, long booking_id, long user_id, long service_id, boolean status, String date) {
+    public void setService_name(String service_name) {
+        this.service_name = service_name;
+    }
+
+    private String service_name;
+
+
+    public BookingsDetails(long cost, long booking_id, long user_id, long service_id, boolean status, String date, String service_name) {
         this.cost = cost;
         this.booking_id = booking_id;
         this.user_id = user_id;
         this.service_id = service_id;
         this.status = status;
         this.date = date;
+        this.service_name = service_name;
     }
 
 

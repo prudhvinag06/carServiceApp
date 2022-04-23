@@ -1,18 +1,35 @@
 import { Component } from 'react';
 import '../navbar.css';
-import { Navigate } from 'react-router-dom'
-import NavBarComponent from './NavBarComponent'
 import '../style.css';
-import LoginComponent from './LoginComponent';
+import AuthenticationService from './AuthenticationService';
+import CarServicesApi from '../ApiServices/CarServicesApi';
 class CarBookingsComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
-    
+          bookings : []
         }
         this.carServicesComp = this.carServicesComp.bind(this);
         this.carBookingsComp = this.carBookingsComp.bind(this);
+        this.logout = this.logout.bind(this);
       }
+  componentDidMount() {
+    this.refreshServices();
+        //console.log("Mount Component", this.state.selectedLocation)
+  }
+
+  refreshServices() {
+    const value = []
+    // CarServicesApi.getServicesWithLocation(this.state.selectedLocation).then((response) =>
+    //   this.setState({ bookings: response.data })
+    // )
+    const user_id = sessionStorage.getItem('authenticatedUser_id')
+    CarServicesApi.getCurrentBookings(user_id).then((response) => 
+    //console.log(response.data)
+      this.setState({bookings : response.data})
+    );
+    console.log(user_id)
+  }
   render() {
     return (
       <div>
@@ -20,7 +37,7 @@ class CarBookingsComponent extends Component {
           {/* <h1>Car Bookings Component</h1> */}
 
           <div>
-        <title>Car Services</title>
+        <title>Car Bookings</title>
         <link rel="stylesheet" href="style.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
@@ -44,6 +61,8 @@ class CarBookingsComponent extends Component {
                <li><a href="#"><i class="fas fa-user"></i>About us</a></li>
                <li><a href="#"><i class="fas fa-globe-asia"></i>Languages</a></li> */}
                 <li><a href="#" onClick={this.contactComp}><i className="fas fa-envelope"></i>Contact us</a></li>
+                <li><a href="#" onClick={this.logout}><i className="fas fa-envelope"></i>Logout</a></li>
+
                 {/* <div className="icons">
                   <a href="#"><i className="fab fa-facebook-f"></i></a>
                   <a href="#"><i className="fab fa-twitter"></i></a>
@@ -54,13 +73,42 @@ class CarBookingsComponent extends Component {
             </nav>
           </div>
           <div className="content">
-            <div className="header">
-              Car Bookings Component
-            </div>
+            
             {/* <p>
             using only HTML and CSS
          </p> */}
           </div>
+
+          <div className="container">
+                <table className="table">
+                  <h1>Current Car Bookings : </h1>
+                  <tr>
+                    <th>Service Centre Name</th>
+                    <th>Price</th>
+                    <th>Booking Date</th>
+                    <th>Booking ID</th>
+                    <th>Status</th>
+
+                  </tr>
+                  <tbody>
+                    {
+
+                      this.state.bookings.map(
+                        booking =>
+                          <tr>
+                            <td>{booking.service_name}</td>
+                            <td>{booking.cost} </td>
+                            <td>{booking.date} </td>
+                            <td>{booking.booking_id} </td>
+                            <td>{booking.status === true? "Servicing" : "Completed"}</td>
+                          </tr>
+                      )
+                    }
+
+                  </tbody>
+                </table>
+
+              </div>
         </body>
       </div>
       </div>
@@ -77,7 +125,12 @@ class CarBookingsComponent extends Component {
     this.props.navigate('/carBookings')
   }
   
-
+  logout(){
+    console.log('Logout is clicked!')
+    AuthenticationService.logout(0);
+    alert('logged out successfully');
+    this.props.navigate('/login');
+  }
   
 }
 

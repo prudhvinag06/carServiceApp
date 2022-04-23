@@ -72,9 +72,6 @@ class CarServicesComponent extends Component {
                     <li><a href="#" onClick={this.carBookingsComp}><i className="fas fa-sliders-h"></i>Bookings</a></li>
                     <li><a href="#" onClick={this.myAccountComp}><i className="fas fa-address-book"></i>My Account</a></li>
                     <li><a href="#" onClick={this.settingsComp}><i className="fas fa-cog"></i>Settings</a></li>
-                    {/* <li><a href="#"><i class="fas fa-stream"></i>Features</a></li>
-               <li><a href="#"><i class="fas fa-user"></i>About us</a></li>
-               <li><a href="#"><i class="fas fa-globe-asia"></i>Languages</a></li> */}
                     <li><a href="#" onClick={this.contactComp}><i className="fas fa-envelope"></i>Contact us</a></li>
                     <li><a href="#" onClick={this.logout}><i className="fas fa-envelope"></i>Logout</a></li>
 
@@ -102,7 +99,7 @@ class CarServicesComponent extends Component {
                             <td>{service.serviceName} </td>
                             <td>{service.location} </td>
 
-                            <td><button className="btn btn-success" onClick={() => this.onBook(service.id)} >Book</button></td>
+                            <td><button className="btn btn-success" onClick={() => this.onBook(service.id, service.serviceName)} >Book</button></td>
                           </tr>
                       )
                     }
@@ -128,9 +125,9 @@ class CarServicesComponent extends Component {
   }
   
 
-  onBook(id) {
+  onBook(id, serviceName) {
     console.log("clicked on Book");
-    this.props.navigate(`/subservicesDisplay/${id}`)
+    this.props.navigate(`/subservicesDisplay/${id}/${serviceName}`)
     //  this.props.navigate(`/subservicesRegistration/${response.data}`)
   }
 
