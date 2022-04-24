@@ -12,9 +12,12 @@ import SubservicesRegistration from "./SubservicesRegistration";
 import SubServicesComponent from "./SubServicesComponent";
 import withParams from "./WithParams.jsx";
 import PaymentComponent from "./PaymentComponent";
+import AdminWelcomeComponent from "./AdminWelcomeComponent";
+import ViewAllBookings from "./ViewAllBookings";
 
 class CarAppComponent extends Component{
     render(){
+        const ViewAllBookingsWithNavigation = withNavigation(ViewAllBookings);
         const LoginComponentWithNavigation = withNavigation(LoginComponent);
         const SignupComponentWithNavigation = withNavigation(SignupComponent);
         const WelcomeComponentWithNavigation = withNavigation(WelcomeComponent);
@@ -25,6 +28,7 @@ class CarAppComponent extends Component{
         const SubServicesRegistrationwithNavigation = withParams(withNavigation(SubservicesRegistration));
         const SubServicesComponentwithNavigation = withParams(withNavigation(SubServicesComponent));
         const PaymentComponentwithNavigation = withParams(withNavigation(PaymentComponent));
+        const AdminWelcomeComponentwithNavigation = withNavigation(AdminWelcomeComponent);
         return(
             <div className="CarApp">
                 <Router>
@@ -35,11 +39,13 @@ class CarAppComponent extends Component{
                         <Route path="/welcomePage" element={<WelcomeComponentWithNavigation />} />
                         <Route path="/carServices" element={<CarServicesComponentWithNavigation />} />
                         <Route path="/carBookings" element={<CarBookingsComponentwithNavigation />} />
-                        <Route path="/adminPage" element={<AdminComponentwithNavigation />} />
+                        <Route path="/registerServices" element={<AdminComponentwithNavigation />} />
                         <Route path="/servicesDetails" element={<ServicesDetailswithNavigation />} />
                         <Route path="/subservicesRegistration/:id" element={<SubServicesRegistrationwithNavigation />} />
                         <Route path="/subservicesDisplay/:id/:serviceName" element={<SubServicesComponentwithNavigation />}/>
                         <Route path="/paymentComponent/:email/:id/:price" element={<PaymentComponentwithNavigation />}/>
+                        <Route path="/adminLogin" element={<AdminWelcomeComponentwithNavigation />}/>
+                        <Route path="/viewAllBookings" element={<ViewAllBookingsWithNavigation />}/>
 
                     </Routes>
                 </Router>

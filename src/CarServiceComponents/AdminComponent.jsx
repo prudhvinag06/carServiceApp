@@ -14,16 +14,66 @@ export default class AdminComponent extends Component {
       service_Provider_name: '',
       location: 'Bangalore'
     }
+    this.addCarServices = this.addCarServices.bind(this);
+    this.viewUserBookings = this.viewUserBookings.bind(this);
+    this.logout = this.logout.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.RegisterService = this.RegisterService.bind(this);
-    this.logout = this.logout.bind(this)
+
 
   }
+  addCarServices(){
+    this.props.navigate('/registerServices');
+  }
+  viewUserBookings(){
+    this.props.navigate('/viewAllBookings')
+  }
 
+  logout(){
+    console.log('Logout is clicked!')
+    AuthenticationService.logout(1);
+    alert('admin logged out successfully');
+    this.props.navigate('/login');
+  }
   render() {
     return (
+      <div>
+        <div>
+          <div>
+        <title>Car Bookings</title>
+        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+       
+          <div className="wrapper">
+            <input type="checkbox" id="btn" hidden />
+            <label for="btn" className="menu-btn">
+              <i className="fas fa-bars"></i>
+              <i className="fas fa-times"></i>
+            </label>
+            <nav id="sidebar">
+              <div className="title">
+                CarService
+              </div>
+              <ul className="list-items">
+                <li><a href="#" onClick={this.addCarServices} ><i className="fas fa-sliders-h"></i>Add Car Services</a></li>
+                <li><a href="#" onClick={this.viewUserBookings}><i className="fas fa-sliders-h"></i>View User Bookings</a></li>
+                <li><a href="#" onClick={this.logout}><i className="fas fa-envelope"></i>Logout</a></li>
+
+                
+              </ul>
+            </nav>
+          </div>
+          
+
+         
+       
+      
+      
+      </div>
+      </div> 
       <div className="container">
-        <button className = "btn btn-success btncolor" id = "btn btn-success" onClick = {this.logout}>logout</button>
+        {/* <button className = "btn btn-success btncolor" id = "btn btn-success" onClick = {this.logout}>logout</button> */}
 
 
         <h1>Admin Services Page</h1>
@@ -48,6 +98,7 @@ export default class AdminComponent extends Component {
 
 
       </div>
+      </div>
     )
   }
 
@@ -56,12 +107,12 @@ export default class AdminComponent extends Component {
       { [event.target.name]: event.target.value }
     )
   }
-  logout(){
-    console.log('Logout is clicked!')
-    AuthenticationService.logout(1);
-    alert('admin logged out successfully');
-    this.props.navigate('/login');
-  }
+  // logout(){
+  //   console.log('Logout is clicked!')
+  //   AuthenticationService.logout(1);
+  //   alert('admin logged out successfully');
+  //   this.props.navigate('/login');
+  // }
   RegisterService() {
     console.log(this.state.service_Provider_name);
     console.log(this.state.location);

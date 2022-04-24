@@ -86,4 +86,16 @@ public class CarRestServices {
 
         return bookingsDetails1;
     }
+
+    @GetMapping("users/bookings")
+    public List<BookingsDetails> getAllBookings(){
+        List<BookingsDetails> bookingsDetails1 = bookServiceJpaRepository.findAllWithStatusIsTrue();
+        return bookingsDetails1;
+    }
+
+    @PutMapping("users/bookings/completed/{bookingid}")
+    public Long updateStatusService(@PathVariable Long bookingid){
+        bookServiceJpaRepository.updateStatus(bookingid);
+        return (long)1;
+    }
 }

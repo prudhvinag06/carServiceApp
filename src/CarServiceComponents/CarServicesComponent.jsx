@@ -26,13 +26,7 @@ class CarServicesComponent extends Component {
   }
   refreshServices() {
     const value = []
-    // CarServicesApi.getServices(this.state.selectedLocation).then((response) =>
-    //   //  console.log(response.data)
-    //   this.setState({ services: response.data })
-    // )
-    //  console.log(this.state.services)
-    // var val = document.getElementById('location')
-    // alert(val.value);
+    
     CarServicesApi.getServicesWithLocation(this.state.selectedLocation).then((response) =>
       this.setState({ services: response.data })
     )

@@ -71,6 +71,21 @@ class CarServicesApi {
         console.log(res.data);
         return res;
     }
+
+    getAllBookings = async () => {
+        console.log('Reached getUserIdFromUserName');
+        const res = await axios.get(`http://localhost:8557/users/bookings`);
+        console.log(res.data);
+        return res;
+    }
+
+    setBookingStatus = async (booking_id) => {
+       const res = await axios.put(`http://localhost:8557/users/bookings/completed/${booking_id}`);
+     //  alert('reached setBookingStatus')
+        return res;
+    }
+
+
 }
 
 export default new CarServicesApi();

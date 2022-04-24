@@ -74,9 +74,7 @@ class CarBookingsComponent extends Component {
           </div>
           <div className="content">
             
-            {/* <p>
-            using only HTML and CSS
-         </p> */}
+            
           </div>
 
           <div className="container">
@@ -92,7 +90,6 @@ class CarBookingsComponent extends Component {
                   </tr>
                   <tbody>
                     {
-
                       this.state.bookings.map(
                         booking =>
                           <tr>
