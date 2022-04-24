@@ -6,7 +6,8 @@ export default class ViewAllBookings extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          services : []
+          services : [],
+          message : null
         }
         this.addCarServices = this.addCarServices.bind(this);
         this.viewUserBookings = this.viewUserBookings.bind(this);
@@ -15,7 +16,8 @@ export default class ViewAllBookings extends Component {
         this.refreshServices = this.refreshServices.bind(this);
       }
       refreshServices(){
-        CarServicesApi.getAllBookings().then((response) =>
+        CarServicesApi.getAllBookings().then(
+          (response) =>
         this.setState({ services: response.data })
       )
       }
@@ -30,9 +32,14 @@ export default class ViewAllBookings extends Component {
         this.componentDidMount();
       }
       completedServicing(booking_id){
-          alert('this button clicked')
-          CarServicesApi.setBookingStatus(booking_id).then(this.componentDidMount());
-          
+       //   alert('this button clicked')
+          CarServicesApi.setBookingStatus(booking_id).then(
+            response =>{
+              this.setState({message : "not null"});
+              this.refreshServices();
+            } 
+            );
+         
 
       }
       logout(){
@@ -71,6 +78,7 @@ export default class ViewAllBookings extends Component {
           </div>
           <div className="container">
                 <table className="table">
+                {this.state.message && <div className='alert alert-success'>Service Completed</div>}
                   <h1>Car Services</h1>
                   <tr>
                     <th>id</th>
