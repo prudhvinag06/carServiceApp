@@ -33,8 +33,7 @@ class CarBookingsComponent extends Component {
   render() {
     return (
       <div>
-          {/* <NavBarComponent val = "Car Bookings Component"></NavBarComponent> */}
-          {/* <h1>Car Bookings Component</h1> */}
+         
 
           <div>
         <title>Car Bookings</title>

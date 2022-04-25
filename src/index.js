@@ -7,12 +7,13 @@ import reportWebVitals from './reportWebVitals';
 import CarServiceComponents from './CarServiceComponents/CarAppComponent.jsx';
 import WelcomeComponent from './CarServiceComponents/WelcomeComponent'
 import CarAppComponent from './CarServiceComponents/CarAppComponent.jsx';
-
+import CardsComponent from './CarServiceComponents/CardsComponent.jsx'
 ReactDOM.render(
   
   <React.StrictMode>
     
     <CarAppComponent/>
+    {/* <CardsComponent/> */}
     
   </React.StrictMode>,
   document.getElementById('root')

@@ -45,4 +45,7 @@ public class Service {
     }
 
     private String location;
+    private String address;
+    private String imageLink;
+
 }

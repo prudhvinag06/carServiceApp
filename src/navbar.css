@@ -3,7 +3,9 @@
     background-color: #333;
     overflow: hidden;
   }
-  
+  .navbar1{
+    z-index: 100;
+  }
   /* Style the links inside the navigation bar */
   .topnav a {
     float: left;
