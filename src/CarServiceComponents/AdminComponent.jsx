@@ -12,6 +12,8 @@ export default class AdminComponent extends Component {
     super(props);
     this.state = {
       service_Provider_name: '',
+      address : '',
+      image_link : '',
       location: 'Bangalore'
     }
     this.addCarServices = this.addCarServices.bind(this);
@@ -83,6 +85,8 @@ export default class AdminComponent extends Component {
           <label><b>Service Provider Name</b></label>
           <input type="text" placeholder="Enter Provider Name" name="service_Provider_name" id="email" required value={this.state.service_Provider_name} onChange={this.handleChange}></input>
 
+          <input type="text" placeholder="Address" name="address" id="address" required value={this.state.address} onChange={this.handleChange}></input>
+          <input type="text" placeholder="Image Link" name="image_link" id="email" required value={this.state.image_link} onChange={this.handleChange}></input>
 
 
           <select name="location" id="location" required value={this.state.location} onChange={this.handleChange}>
@@ -118,7 +122,9 @@ export default class AdminComponent extends Component {
     console.log(this.state.location);
     CarServicesApi.RegisterService({
       serviceName: this.state.service_Provider_name,
-      location: this.state.location
+      location: this.state.location,
+      address : this.state.address,
+      imageLink : this.state.image_link
     }).then(
       (response) => {
         alert(response.data);

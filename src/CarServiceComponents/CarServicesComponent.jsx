@@ -89,10 +89,10 @@ class CarServicesComponent extends Component {
                           <div class="col-md-3 col-sm-6 item" >
                             <div class="card item-card card-block" >
                               {/* <h4 class="card-title text-right" ><i class="material-icons">{service.selectedLocation}</i></h4> */}
-                              <img src = {this.state.imageLink} alt="Photo of sunset" />
+                              <img src = {service.imageLink} alt="Photo of sunset" />
                               <h5 class="item-card-title mt-3 mb-3" >{service.serviceName}</h5>
-                              <p class="card-text">Click here to view more details about pricing</p>
-                              <button onClick={() => this.onBook(service.id, service.serviceName)}>book</button>
+                              <p class="card-text">{service.address}</p>
+                              <button className='btn btn-success' onClick={() => this.onBook(service.id, service.serviceName)}>book</button>
                             </div>
                           </div>
                       )
@@ -124,7 +124,6 @@ class CarServicesComponent extends Component {
     this.props.navigate('/carBookings')
   }
 
-
   onBook(id, serviceName) {
     console.log("clicked on Book");
     this.props.navigate(`/subservicesDisplay/${id}/${serviceName}`)
@@ -137,7 +136,6 @@ class CarServicesComponent extends Component {
     alert('logged out successfully');
     this.props.navigate('/login');
   }
-
 
 }
 
