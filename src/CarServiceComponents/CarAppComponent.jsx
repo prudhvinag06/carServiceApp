@@ -14,9 +14,11 @@ import withParams from "./WithParams.jsx";
 import PaymentComponent from "./PaymentComponent";
 import AdminWelcomeComponent from "./AdminWelcomeComponent";
 import ViewAllBookings from "./ViewAllBookings";
-
+import HeaderComponent from "./HeaderComponent";
+import NavBarComponent from "./NavBarComponent";
 class CarAppComponent extends Component{
     render(){
+        const HeaderComponentWithNavigation = withNavigation(HeaderComponent);
         const ViewAllBookingsWithNavigation = withNavigation(ViewAllBookings);
         const LoginComponentWithNavigation = withNavigation(LoginComponent);
         const SignupComponentWithNavigation = withNavigation(SignupComponent);
@@ -29,6 +31,7 @@ class CarAppComponent extends Component{
         const SubServicesComponentwithNavigation = withParams(withNavigation(SubServicesComponent));
         const PaymentComponentwithNavigation = withParams(withNavigation(PaymentComponent));
         const AdminWelcomeComponentwithNavigation = withNavigation(AdminWelcomeComponent);
+        const NavBarComponentWithNavigation = withNavigation(NavBarComponent);
         return(
             <div className="CarApp">
                 <Router>
