@@ -1,6 +1,8 @@
 import { Component } from 'react';
 import '../navbar.css';
 import '../style.css';
+import '../1.css';
+
 import CarServicesApi from '../ApiServices/CarServicesApi';
 import AuthenticationService from './AuthenticationService';
 class CarServicesComponent extends Component {
@@ -8,7 +10,8 @@ class CarServicesComponent extends Component {
     super(props);
     this.state = {
       services: [],
-      selectedLocation: 'Bangalore'
+      selectedLocation: 'Bangalore',
+      imageLink : 'https://www.drivespark.com/img/2017/01/20-1484898959-bosch-service-center-bengaluru3.jpg'
     }
     this.carServicesComp = this.carServicesComp.bind(this);
     this.carBookingsComp = this.carBookingsComp.bind(this);
@@ -17,7 +20,7 @@ class CarServicesComponent extends Component {
     this.logout = this.logout.bind(this);
     this.onDropDownChange = this.onDropDownChange.bind(this);
   }
-  onDropDownChange(){
+  onDropDownChange() {
     this.componentDidMount();
   }
   componentDidMount() {
@@ -26,13 +29,7 @@ class CarServicesComponent extends Component {
   }
   refreshServices() {
     const value = []
-    // CarServicesApi.getServices(this.state.selectedLocation).then((response) =>
-    //   //  console.log(response.data)
-    //   this.setState({ services: response.data })
-    // )
-    //  console.log(this.state.services)
-    // var val = document.getElementById('location')
-    // alert(val.value);
+
     CarServicesApi.getServicesWithLocation(this.state.selectedLocation).then((response) =>
       this.setState({ services: response.data })
     )
@@ -45,19 +42,21 @@ class CarServicesComponent extends Component {
         <div>
           <label for="cars">Choose a location:</label>
           {/* Below is an async setState call which can be very useful */}
-          <select id = "location" onChange = {(e) => this.setState({selectedLocation : document.getElementById('location').value}, () => {this.onDropDownChange()})} name="cars">
+          <select id="location" onChange={(e) => this.setState({ selectedLocation: document.getElementById('location').value }, () => { this.onDropDownChange() })} name="cars">
 
             <option value="Bangalore">Bangalore</option>
             <option value="Hyderabad">Hyderabad</option>
           </select>
 
-          <div>
+          <div className='navbar1'>
             <title>Car Services</title>
             <link rel="stylesheet" href="style.css" />
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
-            <body>
-              <div className="wrapper">
+            <body className='navbar1'>
+              
+              <div>
+              <div className = "navbar1" className="wrapper">
                 <input type="checkbox" id="btn" hidden />
                 <label for="btn" className="menu-btn">
                   <i className="fas fa-bars"></i>
@@ -72,45 +71,43 @@ class CarServicesComponent extends Component {
                     <li><a href="#" onClick={this.carBookingsComp}><i className="fas fa-sliders-h"></i>Bookings</a></li>
                     <li><a href="#" onClick={this.myAccountComp}><i className="fas fa-address-book"></i>My Account</a></li>
                     <li><a href="#" onClick={this.settingsComp}><i className="fas fa-cog"></i>Settings</a></li>
-                    {/* <li><a href="#"><i class="fas fa-stream"></i>Features</a></li>
-               <li><a href="#"><i class="fas fa-user"></i>About us</a></li>
-               <li><a href="#"><i class="fas fa-globe-asia"></i>Languages</a></li> */}
                     <li><a href="#" onClick={this.contactComp}><i className="fas fa-envelope"></i>Contact us</a></li>
                     <li><a href="#" onClick={this.logout}><i className="fas fa-envelope"></i>Logout</a></li>
 
                   </ul>
                 </nav>
               </div>
+              </div>
+              <div className = "content" className="container mt-2">
 
-              <div className="container">
-                <table className="table">
-                  <h1>Car Services</h1>
-                  <tr>
-                    <th>id</th>
-                    <th>Service Centre Name</th>
-                    <th>location</th>
+                <div className="row">{
 
-                  </tr>
-                  <tbody>
-                    {
-
+                  <div className="container mt-2">
+                    <div class="row">{
                       this.state.services.map(
                         service =>
-
-                          <tr>
-                            <td>{service.id} </td>
-                            <td>{service.serviceName} </td>
-                            <td>{service.location} </td>
-
-                            <td><button className="btn btn-success" onClick={() => this.onBook(service.id)} >Book</button></td>
-                          </tr>
+                          <div class="col-md-3 col-sm-6 item" >
+                            <div class="card item-card card-block" >
+                              {/* <h4 class="card-title text-right" ><i class="material-icons">{service.selectedLocation}</i></h4> */}
+                              <img src = {service.imageLink} alt="Photo of sunset" />
+                              <h5 class="item-card-title mt-3 mb-3" >{service.serviceName}</h5>
+                              <p class="card-text">{service.address}</p>
+                              <button className='btn btn-success' onClick={() => this.onBook(service.id, service.serviceName)}>book</button>
+                            </div>
+                          </div>
                       )
                     }
 
-                  </tbody>
-                </table>
+                    </div>
+
+
+                  </div>
+
+                }
+                </div>
 
               </div>
+
             </body>
           </div>
         </div>
@@ -126,11 +123,10 @@ class CarServicesComponent extends Component {
     console.log("bookinsadffsfgs");
     this.props.navigate('/carBookings')
   }
-  
 
-  onBook(id) {
+  onBook(id, serviceName) {
     console.log("clicked on Book");
-    this.props.navigate(`/subservicesDisplay/${id}`)
+    this.props.navigate(`/subservicesDisplay/${id}/${serviceName}`)
     //  this.props.navigate(`/subservicesRegistration/${response.data}`)
   }
 
@@ -140,7 +136,6 @@ class CarServicesComponent extends Component {
     alert('logged out successfully');
     this.props.navigate('/login');
   }
-
 
 }
 

@@ -88,7 +88,8 @@ export default class SubServicesComponent extends Component {
                 user_id : userId,
                 service_id : this.props.params.id,
                 status : true,
-                date : this.state.date
+                date : this.state.date,
+                service_name : this.props.params.serviceName
             });
             this.props.navigate(`/paymentComponent/${userId}/${this.props.params.id}/${this.state.price}`)            
         }

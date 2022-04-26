@@ -1,7 +1,6 @@
 import { Component } from 'react';
 import '../App.css';
 import '../App2.css';
-import { Navigate } from 'react-router-dom'
 import CarServicesApi from '../ApiServices/CarServicesApi';
 import AuthenticationService from './AuthenticationService.js';
 
@@ -49,7 +48,7 @@ class LoginComponent extends Component {
   LoginClicked() {
     if (this.state.email == "admin@gmail.com") {
       AuthenticationService.registerSuccessfulLogin(this.state.email, this.state.password, 1);
-      this.props.navigate('/adminPage')
+      this.props.navigate('/adminLogin')
     }
     else {
       CarServicesApi.checkLoginStatus(this.state.email, this.state.password).then(

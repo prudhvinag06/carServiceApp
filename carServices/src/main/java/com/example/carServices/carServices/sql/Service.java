@@ -1,5 +1,7 @@
 package com.example.carServices.carServices.sql;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 
 @Entity
@@ -38,11 +40,35 @@ public class Service {
     @Column(unique = true)
     private String serviceName;
 
-    public Service(Long id, String serviceName, String location) {
+    public Service(Long id, String serviceName, String location, String address, String imageLink) {
         this.id = id;
         this.serviceName = serviceName;
         this.location = location;
+        this.address = address;
+        this.imageLink = imageLink;
+
     }
 
     private String location;
+    private String address;
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getImageLink() {
+        return imageLink;
+    }
+
+    public void setImageLink(String imageLink) {
+        this.imageLink = imageLink;
+    }
+
+    @Column(name = "imageLink", length = 50000)
+    private String imageLink;
+
 }
