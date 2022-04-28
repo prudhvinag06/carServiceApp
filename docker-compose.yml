@@ -5,9 +5,24 @@ services:
       context: .
     volumes:
       - .:/my-app
+    
+  frontend:
+    image: carservice-frontend
     ports:
-      - 4200:4200
-    image: app:carapp-frontend
-    container_name: frontend_container
+      - 3000:3000
+    container_name: frontend_container1
     command: npm start
+  backend:
+    image: carservice-backend
+    ports:
+      - 8557:8557
+    container_name: backend_container1
+
+  
+ 
+ 
+
+
+
+
       
