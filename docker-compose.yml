@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  app:
+    build: 
+      context: .
+    volumes:
+      - .:/my-app
+    ports:
+      - 4200:4200
+    image: app:carapp-frontend
+    container_name: frontend_container
+    command: npm start
+      

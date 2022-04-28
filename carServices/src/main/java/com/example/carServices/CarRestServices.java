@@ -1,6 +1,6 @@
-package com.example.carServices.carServices;
+package com.example.carServices;
 
-import com.example.carServices.carServices.sql.*;
+import com.example.carServices.sql.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

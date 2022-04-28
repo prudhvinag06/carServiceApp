@@ -1,4 +1,4 @@
-package com.example.carServices.carServices.sql;
+package com.example.carServices.sql;
 
 import javax.persistence.*;
 

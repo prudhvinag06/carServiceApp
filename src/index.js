@@ -13,7 +13,6 @@ ReactDOM.render(
   <React.StrictMode>
     
     <CarAppComponent/>
-    {/* <CardsComponent/> */}
     
   </React.StrictMode>,
   document.getElementById('root')
