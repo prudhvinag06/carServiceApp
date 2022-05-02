@@ -1,6 +1,6 @@
-package com.example.carServices.carServices;
+package com.example.carServices;
 
-import com.example.carServices.carServices.sql.*;
+import com.example.carServices.sql.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,7 +9,7 @@ import java.util.List;
 @RestController
 @CrossOrigin(origins = "http://localhost:3000/")
 
-public class CarRestServices {
+public class Controller {
     @Autowired
     private ServicesHardCoded servicesHardCoded;
 

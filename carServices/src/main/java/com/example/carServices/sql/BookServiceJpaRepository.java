@@ -1,4 +1,4 @@
-package com.example.carServices.carServices.sql;
+package com.example.carServices.sql;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;

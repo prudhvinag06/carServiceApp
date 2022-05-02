@@ -1,0 +1,28 @@
+version: '3.8'
+services:
+  app:
+    build: 
+      context: .
+    volumes:
+      - .:/my-app
+    
+  frontend:
+    image: carservice-frontend
+    ports:
+      - 3000:3000
+    container_name: frontend_container1
+    command: npm start
+  backend:
+    image: carservice-backend
+    ports:
+      - 8557:8557
+    container_name: backend_container1
+
+  
+ 
+ 
+
+
+
+
+      

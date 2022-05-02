@@ -1,6 +1,6 @@
-package com.example.carServices.carServices;
+package com.example.carServices;
 
-import com.example.carServices.carServices.sql.UserDetails;
+import com.example.carServices.sql.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
