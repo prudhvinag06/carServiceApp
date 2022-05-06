@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.5'
 services:
   app:
     build: 
@@ -12,14 +12,29 @@ services:
       - 3000:3000
     container_name: frontend_container1
     command: npm start
-  backend:
-    image: carservice-backend
-    ports:
-      - 8557:8557
-    container_name: backend_container1
 
-  
- 
+  backend:
+    image: carservices-backend-spring
+    ports:
+      - "8557:8557"
+    container_name: backend_container_sql1
+    environment:
+      - MYSQL_HOST=mydb
+      - MYSQL_PORT=3306
+    depends_on:
+      - mydb
+
+  mydb:
+    image: mysql:latest
+    ports:
+      - "3306:3306"
+    container_name: database_container
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=test
+      - MYSQL_USER=prudhvi
+      - MYSQL_PASSWORD=password
+
  
 
 
