@@ -1,26 +1,22 @@
-# ---
+---
 
-# - name: run containers
-#   hosts: all
-#   become: true
-
-#   tasks:
-#   - name: copy docker file
-#     copy:
-#       src: docker-compose.yml
-#       dest: docker-compose.yml
-#   - name: list files
-#     shell:
-#       cmd: ls
-#   - name: dockercompose
-#     docker_compose:
-#       project_src: .
-#       state: present
-#       files:
-#       - docker-compose.yml
-     
-- name: Run container
-  become: True
+- name: run containers
   hosts: all
-  shell:
-    cmd: "docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d"
+  become: true
+
+  tasks:
+  - name: copy docker file
+    copy:
+      src: docker-compose.yml
+      dest: docker-compose.yml
+  - name: list files
+    shell:
+      cmd: ls
+  - name: dockercompose
+    docker_compose:
+      project_src: .
+      state: present
+      files:
+      - docker-compose.yml
+     
+
