@@ -10,10 +10,9 @@
         name: docker
         state: started
     - name: pull docker image
-      shell: docker pull prudhvinag637/miniprojfinal
+      shell: docker-compose up
       
-    - name: running container
-      shell: docker run -it -d prudhvinag637/miniprojfinal
+    
 
 #   tasks:
 #   - name: copy docker file
