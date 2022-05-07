@@ -3,8 +3,11 @@ services:
   app:
     build: 
       context: .
+      dockerfile: Dockerfile
     volumes:
       - .:/my-app
+    
+
     
   frontend:
     image: "prudhvinag637/frontend-jenkins"
