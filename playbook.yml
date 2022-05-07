@@ -9,8 +9,11 @@
       service:
         name: docker
         state: started
-    - name: run docker-compose
-      shell: echo "hi"
+    - name: pull docker image
+      shell: docker pull prudhvinag637/miniprojfinal
+      
+    - name: running container
+      shell: docker run -it -d prudhvinag637/miniprojfinal
 
 #   tasks:
 #   - name: copy docker file
