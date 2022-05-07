@@ -2,21 +2,29 @@
 
 - name: run containers
   hosts: all
-  become: true
-
+  
   tasks:
-  - name: copy docker file
-    copy:
-      src: docker-compose.yml
-      dest: docker-compose.yml
-  - name: list files
-    shell:
-      cmd: ls
-  - name: dockercompose
-    docker_compose:
-      project_src: .
-      state: present
-      files:
-      - docker-compose.yml
+
+    - name: Start docker service
+      service:
+        name: docker
+        state: started
+    - name: run docker-compose
+      shell: docker-compose up
+
+#   tasks:
+#   - name: copy docker file
+#     copy:
+#       src: docker-compose.yml
+#       dest: docker-compose.yml
+#   - name: list files
+#     shell:
+#       cmd: ls
+#   - name: dockercompose
+#     docker_compose:
+#       project_src: .
+#       state: present
+#       files:
+#       - docker-compose.yml
      
 
