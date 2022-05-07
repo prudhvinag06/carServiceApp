@@ -10,7 +10,7 @@
         name: docker
         state: started
     - name: run docker-compose
-      shell: docker-compose up
+      shell: pwd
 
 #   tasks:
 #   - name: copy docker file
