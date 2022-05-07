@@ -10,7 +10,7 @@
         name: docker
         state: started
     - name: pull docker image
-      shell: docker-compose up --build
+      shell: pwd
       
     
 
