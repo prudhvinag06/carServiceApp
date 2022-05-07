@@ -35,7 +35,7 @@ services:
       - MYSQL_USER=prudhvi
       - MYSQL_PASSWORD=password
   vars:
-    ansible_python_interpreter: /bin/python3
+    ansible_python_interpreter: auto
     
     
 
