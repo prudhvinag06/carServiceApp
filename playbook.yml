@@ -9,7 +9,7 @@
         state: started
         
     - name: pull docker image
-      shell: pwd
+      shell: docker pull prudhvinag637/backend-jenkins
       
     - name: running container
       shell: pwd
