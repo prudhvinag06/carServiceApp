@@ -34,8 +34,6 @@ services:
       - MYSQL_DATABASE=test
       - MYSQL_USER=prudhvi
       - MYSQL_PASSWORD=password
-  vars:
-    ansible_python_interpreter: auto
     
     
 
