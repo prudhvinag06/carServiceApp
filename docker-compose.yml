@@ -20,6 +20,7 @@ services:
     ports:
       - "8557:8557"
     container_name: backend_container_sql1
+    restart: on-failure
     environment:
       - MYSQL_HOST=mydb
       - MYSQL_PORT=3306
