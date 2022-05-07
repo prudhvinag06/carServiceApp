@@ -17,5 +17,5 @@
       project_src: .
       state: present
       files:
-      docker-compose.yml
+      - docker-compose.yml
      
