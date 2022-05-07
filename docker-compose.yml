@@ -7,14 +7,14 @@ services:
       - .:/my-app
     
   frontend:
-    image: carservice-frontend
+    image: "prudhvinag637/frontend-jenkins"
     ports:
-      - 3000:3000
+      - "3000:3000"
     container_name: frontend_container1
     command: npm start
 
   backend:
-    image: carservices-backend-spring
+    image: "prudhvinag637/backend-jenkins"
     ports:
       - "8557:8557"
     container_name: backend_container_sql1
@@ -25,7 +25,7 @@ services:
       - mydb
 
   mydb:
-    image: mysql:latest
+    image: "mysql:latest"
     ports:
       - "3306:3306"
     container_name: database_container
@@ -34,6 +34,8 @@ services:
       - MYSQL_DATABASE=test
       - MYSQL_USER=prudhvi
       - MYSQL_PASSWORD=password
+    
+    
 
  
 
