@@ -1,3 +1,5 @@
 [ubuntu18]
-127.0.0.1 ansible_user=prudhvi
+172.18.0.1 ansible_user=prudhvi
+ansible_sudo_pass=papputomato
+ansible_python_interpreter=/usr/bin/python2
 
