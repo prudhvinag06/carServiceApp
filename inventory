@@ -1,4 +1,4 @@
 [ubuntu18]
-172.18.0.1 ansible_user=prudhvi
+localhost ansible_user=prudhvi
 
 
