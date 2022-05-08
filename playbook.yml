@@ -1,4 +1,13 @@
-- name: Run container
-  become: True
-  shell:
-    cmd: "docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d"
+---
+
+- name: run containers
+  hosts: true
+  
+  tasks:
+  - name: copy docker file
+    copy:
+      src: docker-compose.yml
+      dest: docker-compose.yml
+  - name: dockercompose
+    shell: 
+      cmd: docker-compose up
