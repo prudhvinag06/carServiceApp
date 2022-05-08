@@ -1,6 +1,6 @@
 ---
 - name: run containers
-  hosts: docker18
+  hosts: docker
   become: true
 
   tasks:
