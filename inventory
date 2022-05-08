@@ -1,6 +1,4 @@
-[ubuntu18]
 172.18.0.1 ansible_user=prudhvi
 host_key_checking = False
-
 
 
