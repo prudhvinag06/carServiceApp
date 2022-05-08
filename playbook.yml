@@ -1,9 +1,7 @@
 ---
 
 - name: run containers
-  hosts: all
-  become: true
-
+ 
   tasks:
   - name: copy docker file
     copy:
