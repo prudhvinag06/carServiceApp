@@ -15,4 +15,5 @@
   - name: dockercompose
     docker_compose:
       project_src: .
-      state: present
+      shell: 
+      cmd: docker-compose up
