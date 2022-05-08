@@ -10,5 +10,5 @@
       src: docker-compose.yml
       dest: docker-compose.yml
   - name: dockercompose
-      shell: 
+    shell: 
       cmd: docker-compose up
