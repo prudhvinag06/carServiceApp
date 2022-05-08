@@ -1,10 +1,12 @@
 version: '3.5'
 services:
-  app:
-    build: 
-      context: .
-    volumes:
-      - .:/my-app
+#   app:
+#     build: 
+#       context: .
+#     volumes:
+#       - .:/my-app
+    
+
     
   frontend:
     image: "prudhvinag637/frontend-jenkins"
@@ -18,6 +20,7 @@ services:
     ports:
       - "8557:8557"
     container_name: backend_container_sql1
+    restart: on-failure
     environment:
       - MYSQL_HOST=mydb
       - MYSQL_PORT=3306
@@ -28,12 +31,18 @@ services:
     image: "mysql:latest"
     ports:
       - "3306:3306"
+    # volumes:
+    # - /var/lib/mysql6/data2
+
+
+    
     container_name: database_container
     environment:
       - MYSQL_ROOT_PASSWORD=password
       - MYSQL_DATABASE=test
       - MYSQL_USER=prudhvi
       - MYSQL_PASSWORD=password
+
     
     
 
