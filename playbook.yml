@@ -9,11 +9,6 @@
     copy:
       src: docker-compose.yml
       dest: docker-compose.yml
-  - name: list files
-    shell:
-      cmd: ls
   - name: dockercompose
-    docker_compose:
-      project_src: .
       shell: 
       cmd: docker-compose up
