@@ -32,7 +32,7 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - mysql-data2:/var/lib/postgresql/data
+      - mysql-data3:/var/lib/mysql
     container_name: database_container
     environment:
       - MYSQL_ROOT_PASSWORD=password
