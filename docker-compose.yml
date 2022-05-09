@@ -32,7 +32,7 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - mysql-data:/home/prudhvi/Documents/database/var/lib/mysql
+      - mysql-data1:/var/lib/postgresql/data
     container_name: database_container
     environment:
       - MYSQL_ROOT_PASSWORD=password
@@ -41,7 +41,7 @@ services:
       - MYSQL_PASSWORD=password
 
 volumes:
-  mysql-data:
+  mysql-data1:
 
     
     
