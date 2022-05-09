@@ -31,17 +31,17 @@ services:
     image: "mysql:latest"
     ports:
       - "3306:3306"
-    # volumes:
-    # - /var/lib/mysql6/data2
-
-
-    
+    volumes:
+      - mysql-data:/home/prudhvi/Documents/database/var/lib/mysql
     container_name: database_container
     environment:
       - MYSQL_ROOT_PASSWORD=password
       - MYSQL_DATABASE=test
       - MYSQL_USER=prudhvi
       - MYSQL_PASSWORD=password
+
+volumes:
+  mysql-data:
 
     
     
