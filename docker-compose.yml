@@ -12,14 +12,14 @@ services:
     image: "prudhvinag637/frontend-jenkins"
     ports:
       - "3000:3000"
-    container_name: frontend_container1
+    container_name: frontend_container
     command: npm start
 
   backend:
     image: "prudhvinag637/backend-jenkins"
     ports:
       - "8557:8557"
-    container_name: backend_container_sql1
+    container_name: backend_container
     restart: on-failure
     environment:
       - MYSQL_HOST=mydb
